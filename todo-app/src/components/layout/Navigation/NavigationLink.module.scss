@@ -1,0 +1,29 @@
+@import '../../../assets/var.scss';
+
+.nav__link {
+	a {
+		display: flex;
+		align-items: center;
+		font-size: 1.3rem;
+		text-decoration: none;
+		color: black;
+		box-sizing: border-box;
+		padding: 12px 17px;
+
+		@media(hover:hover) {
+			&:hover {
+				background-color: #c7c0bf70;
+				border-radius: 7px;
+			}
+		}
+
+		svg {
+			min-width: 27px;
+		}
+
+		>div {
+			margin-left: 10px;
+		}
+	}
+
+}
