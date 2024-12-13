@@ -1,0 +1,21 @@
+.container {
+	display: flex;
+	height: 100vh;
+	width: 100%;
+
+	.left {
+		width: 50%;
+		display: flex;
+		flex-direction: column;
+		justify-content: center;
+
+		h1 {
+			font-size: 3rem;
+			text-align: center;
+		}
+	}
+
+	.right {
+		width: 50%;
+	}
+}
