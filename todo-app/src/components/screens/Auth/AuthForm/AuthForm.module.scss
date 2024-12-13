@@ -1,0 +1,36 @@
+.formWindow {
+	width: 40%;
+	padding: 30px 20px;
+	border: 2px solid #000;
+	border-radius: 15px;
+	margin: 0 auto;
+
+	.title {
+		font-size: 2rem;
+		margin-bottom: 20px;
+	}
+
+	.form {
+		>label {
+			display: flex;
+			flex-direction: column;
+			margin-bottom: 15px;
+
+			input {
+				margin-top: 7px;
+				border-radius: 15px;
+				padding: 7px 15px;
+				border: 2px solid #000;
+			}
+		}
+	}
+
+	.footer {
+		.footerText {
+			>a {
+				margin-left: 7px;
+				text-decoration: none;
+			}
+		}
+	}
+}
