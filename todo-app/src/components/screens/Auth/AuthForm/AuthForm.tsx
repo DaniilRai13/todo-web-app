@@ -1,25 +1,41 @@
 import { FC } from 'react'
 // import { useForm } from 'react-hook-form'
+import cn from 'classnames'
 import { NavLink } from 'react-router'
+import Button from '../../../../shared/Button/Button'
 import styles from './AuthForm.module.scss'
 
-const AuthForm: FC<{ name: string }> = ({ name }) => {
+const AuthForm: FC<{ name: string, isPage: boolean }> = ({ name, isPage }) => {
 	// const { register, handleSubmit, formState } = useForm()
-	// const { pathname } = useLocation()
-	// const isRegister = pathname.includes('register')
 	return (
 		<div className={styles.formWindow}>
-			<h1 className={styles.title}>{name.toUpperCase()}</h1>
+			<h1
+				className={cn(styles.title, {
+					[styles.register]: isPage,
+					[styles.login]: !isPage
+				})}>{name.toUpperCase()}</h1>
 			<form className={styles.form}>
 				<label>
 					<span>Email:</span>
-					<input />
+					<input
+						className={cn(styles.input, {
+							[styles.register]: isPage,
+							[styles.login]: !isPage
+						})} />
 				</label>
 				<label>
 					<span>Password:</span>
-					<input />
+					<input
+						type='password'
+						className={cn(styles.input, {
+							[styles.register]: isPage,
+							[styles.login]: !isPage
+						})} />
 				</label>
-				<button>{name.toUpperCase()}</button>
+				<Button
+					title={name.toUpperCase()}
+					classNames={isPage ? styles.btn_register : styles.btn_login}
+				/>
 			</form>
 			<footer className={styles.footer}>
 				{name === 'register'
