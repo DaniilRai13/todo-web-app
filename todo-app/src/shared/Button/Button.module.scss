@@ -1,0 +1,13 @@
+@import '../../assets/var.scss';
+
+.button {
+	display: block;
+	padding: 10px 25px;
+	background-color: $color-blue;
+	border-radius: 10px;
+	color: aliceblue;
+	letter-spacing: 2px;
+	font-size: 1.1rem;
+	cursor: pointer;
+	transition: background-color .1s ease-in-out;
+}
