@@ -13,7 +13,7 @@ function App() {
         path={pageRoutes.home}
         element={<Layout />}
       >
-        <Route path='dashboard' element={<Home />} />
+        <Route path='overview' element={<Home />} />
         <Route path='calendar' element={<Calendar />} />
         <Route path='profile' element={<Profile />} />
       </Route>
