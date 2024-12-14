@@ -1,31 +1,60 @@
+@import '../../../../assets/var.scss';
+
 .formWindow {
-	width: 40%;
+	position: relative;
+	top: 50%;
+	transform: translateY(-50%);
+	width: 300px;
 	padding: 30px 20px;
 	border: 2px solid #000;
 	border-radius: 15px;
 	margin: 0 auto;
+	background-color: #fff;
 
 	.title {
 		font-size: 2rem;
 		margin-bottom: 20px;
+		transition: color .1s ease-in-out;
+
+		&.register {
+			color: $color-red;
+		}
+
+		&.login {
+			color: $color-blue;
+		}
 	}
 
 	.form {
-		>label {
+		label {
 			display: flex;
 			flex-direction: column;
 			margin-bottom: 15px;
 
-			input {
+			.input {
 				margin-top: 7px;
 				border-radius: 15px;
 				padding: 7px 15px;
-				border: 2px solid #000;
+				border: 2px solid;
+
+				&.register {
+					border-color: $color-red;
+				}
+
+				&.login {
+					border-color: $color-blue;
+				}
 			}
+		}
+
+		.btn_register {
+			background-color: $color-red;
 		}
 	}
 
 	.footer {
+		margin-top: 15px;
+
 		.footerText {
 			>a {
 				margin-left: 7px;
