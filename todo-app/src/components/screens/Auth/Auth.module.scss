@@ -1,7 +1,10 @@
+@import '../../../assets/var.scss';
+
 .container {
 	display: flex;
 	height: 100vh;
 	width: 100%;
+	background-color: #8784ef66;
 
 	.left {
 		width: 50%;
@@ -13,9 +16,18 @@
 			font-size: 3rem;
 			text-align: center;
 		}
+
+		&.register {
+			background-color: $color-red;
+		}
+
+		&.login {
+			background-color: $color-blue;
+		}
 	}
 
 	.right {
+
 		width: 50%;
 	}
 }
