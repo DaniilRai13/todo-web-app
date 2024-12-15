@@ -1,0 +1,32 @@
+@import '../../assets/var.scss';
+
+.field {
+	label {
+		display: flex;
+		flex-direction: column;
+		margin-bottom: 15px;
+
+		input {
+			margin-top: 7px;
+			border-radius: 15px;
+			padding: 7px 15px;
+			border: 2px solid;
+		}
+	}
+
+	&.register {
+		label {
+			input {
+				border-color: $color-red;
+			}
+		}
+	}
+
+	&.login {
+		label {
+			input {
+				border-color: $color-blue;
+			}
+		}
+	}
+}
