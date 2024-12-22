@@ -1,10 +1,12 @@
 @import '../../assets/var.scss';
 
 .field {
+	position: relative;
+
 	label {
 		display: flex;
 		flex-direction: column;
-		margin-bottom: 15px;
+		margin-bottom: 25px;
 
 		input {
 			margin-top: 7px;
@@ -12,6 +14,14 @@
 			padding: 7px 15px;
 			border: 2px solid;
 		}
+	}
+
+	.error {
+		position: absolute;
+		bottom: -18px;
+		left: 5px;
+		font-size: 14px;
+		color: rgb(237, 31, 31);
 	}
 
 	&.register {
