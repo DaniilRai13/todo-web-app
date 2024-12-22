@@ -4,7 +4,16 @@ h3,
 h4,
 h5,
 h6,
+button,
+span,
 body {
   margin: 0;
   padding: 0;
+  font-family: "Itim", cursive;
+  font-weight: 600;
+  font-style: normal;
+}
+
+html {
+  height: 100%;
 }
