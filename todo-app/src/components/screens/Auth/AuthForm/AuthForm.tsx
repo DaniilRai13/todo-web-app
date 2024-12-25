@@ -1,22 +1,31 @@
 import { FC } from 'react'
-// import { useForm } from 'react-hook-form'
 import cn from 'classnames'
-import { useForm } from 'react-hook-form'
-import { NavLink } from 'react-router'
+import { SubmitHandler, useForm } from 'react-hook-form'
+import { NavLink, useNavigate } from 'react-router'
 import Button from '../../../../shared/Button/Button'
 import Field from '../../../../shared/form/Field'
-import { IField } from '../../../../shared/form/form.interface'
 import styles from './AuthForm.module.scss'
+import { useActions } from '../../../../shared/hooks/useActions'
+import { IAuthData } from '../../../../interfaces/Auth.interface'
+import { useTypedSelector } from '../../../../shared/hooks/useTypedSelector'
 
 const AuthForm: FC<{ name: string, isPage: boolean }> = ({ name, isPage }) => {
-	const { register, handleSubmit, formState: { errors } } = useForm<IField>({
+	const { register, handleSubmit, formState: { errors }, reset } = useForm<IAuthData>({
 		mode: 'onChange'
 	})
-	const { isLoading } = useTypedSelector(({ user }) => user)
-	const onSubmit = (data: IField) => {
-		console.log(data)
-	}
+	const { register: registerAction, login } = useActions()
+	const { isLoading, isSuccess, error } = useTypedSelector(({ user }) => user)
 
+	const navigate = useNavigate()
+
+	const onSubmit: SubmitHandler<IAuthData> = (data) => {
+		if (isPage) {
+			registerAction(data)
+			// navigate('/auth')
+		}
+		else login(data)
+		reset()
+	}
 	return (
 		<div className={styles.formWindow}>
 			<h1
@@ -53,6 +62,7 @@ const AuthForm: FC<{ name: string, isPage: boolean }> = ({ name, isPage }) => {
 				<Button
 					title={name.toUpperCase()}
 					classNames={isPage ? styles.btn_register : styles.btn_login}
+					isLoading={isLoading}
 				/>
 			</form>
 			<footer className={styles.footer}>
