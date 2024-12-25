@@ -1,4 +1,4 @@
-import { Route, Routes } from 'react-router'
+import { Navigate, Route, Routes } from 'react-router'
 import './App.scss'
 import Layout from './components/layout/Layout'
 import Calendar from './components/pages/Calendar/Calendar'
@@ -13,6 +13,7 @@ function App() {
         path={pageRoutes.home}
         element={<Layout />}
       >
+        <Route index element={<Navigate to={'/overview'}/>} />
         <Route path='overview' element={<Home />} />
         <Route path='calendar' element={<Calendar />} />
         <Route path='profile' element={<Profile />} />
