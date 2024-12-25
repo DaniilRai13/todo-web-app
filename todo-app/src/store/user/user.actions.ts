@@ -5,6 +5,22 @@ import { AuthService } from '../../services/auth.service'
 export const register = createAsyncThunk(
 	'user/register',
 	async (data: IAuthData) => {
-		AuthService.register(data)
+		try {
+			await AuthService.register(data)
+		} catch (error: any) {
+			throw new Error(error)
+		}
+	}
+)
+export const login = createAsyncThunk(
+	'user/login',
+	async (data: IAuthData) => {
+		return AuthService.login(data)
+	}
+)
+export const logout = createAsyncThunk(
+	'user/logout',
+	async () => {
+		return AuthService.logout()
 	}
 )
