@@ -12,7 +12,13 @@ const initialState = {
 export const userSlice = createSlice({
 	name: 'user',
 	initialState,
-	reducers: {},
+	reducers: {
+		resetStatus(state) {
+			state.error = null;       // Сбрасываем ошибку
+			state.isSuccess = false;  // Сбрасываем флаг успеха
+			state.isLoading = false;  // Сбрасываем флаг загрузки (если есть)
+		},
+	},
 	extraReducers(builder) {
 		builder.addCase(register.pending, (state) => {
 			state.isLoading = true
@@ -25,7 +31,6 @@ export const userSlice = createSlice({
 		builder.addCase(register.rejected, (state, { error }) => {
 			state.isLoading = false
 			state.isSuccess = false;
-			console.log(error)
 			state.error = error.message;
 		})
 
@@ -51,7 +56,6 @@ export const userSlice = createSlice({
 			console.log(payload)
 			state.isLoading = false
 			state.user = null
-			// state.user = payload.user
 		})
 		builder.addCase(logout.rejected, state => {
 			state.isLoading = false
@@ -59,4 +63,5 @@ export const userSlice = createSlice({
 		})
 	},
 })
+export const { resetStatus } = userSlice.actions;
 export default userSlice.reducer
