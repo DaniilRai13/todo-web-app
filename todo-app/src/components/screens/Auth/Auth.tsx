@@ -1,11 +1,29 @@
 import cn from 'classnames'
-import { FC } from 'react'
+import { FC, useEffect } from 'react'
 import { Route, Routes, useLocation } from 'react-router'
 import styles from './Auth.module.scss'
 import AuthForm from './AuthForm/AuthForm'
+import Alert from '../../../shared/notification/Alert'
+import { useTypedSelector } from '../../../shared/hooks/useTypedSelector'
+import { useActions } from '../../../shared/hooks/useActions'
+import { AnimatePresence } from 'framer-motion'
+
 const Auth: FC = () => {
 	const { pathname } = useLocation()
+	const { resetStatus } = useActions()
 	const isRegisterPage = pathname.includes('register')
+	const { error, isSuccess } = useTypedSelector(({ user }) => user)
+
+	useEffect(() => {
+		if (error || isSuccess) {
+			const timer = setTimeout(() => {
+				resetStatus()
+			}, 2600)
+
+			return () => clearTimeout(timer)
+		}
+	}, [error, isSuccess])
+
 	return (
 		<div className={styles.container}>
 			<section className={cn(styles.left, {
@@ -20,6 +38,10 @@ const Auth: FC = () => {
 					<Route path='/register' element={<AuthForm name='register' isPage={isRegisterPage} />} />
 				</Routes>
 			</section>
+			<AnimatePresence>
+				{error && <Alert type='error' message={error} />}
+				{isSuccess && <Alert type='success' />}
+			</AnimatePresence>
 		</div>
 	)
 }
