@@ -1,0 +1,27 @@
+.alert {
+  position: absolute;
+  bottom: 30px;
+  right: 30px;
+  width: 250px;
+  padding: 10px 25px;
+  border: 2px solid;
+  border-radius: 15px;
+  background-color: rgb(255, 255, 255);
+  transition: 0.1s linear;
+
+  &.error {
+    border-color: #f78080;
+    color: #dd6868e8;
+    font-weight: 400;;
+  }
+  &.success {
+    border-color: #49c355;
+    color: #7fd988;
+  }
+
+  .title{
+    margin-bottom: 10px;
+    color: #843030;
+    font-weight: 600;
+  }
+}
