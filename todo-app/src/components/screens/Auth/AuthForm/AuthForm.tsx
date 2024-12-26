@@ -14,18 +14,22 @@ const AuthForm: FC<{ name: string, isPage: boolean }> = ({ name, isPage }) => {
 		mode: 'onChange'
 	})
 	const { register: registerAction, login } = useActions()
-	const { isLoading, isSuccess, error } = useTypedSelector(({ user }) => user)
+	const { isLoading, isSuccess } = useTypedSelector(({ user }) => user)
 
 	const navigate = useNavigate()
 
 	const onSubmit: SubmitHandler<IAuthData> = (data) => {
 		if (isPage) {
 			registerAction(data)
-			// navigate('/auth')
+
+			if (isSuccess) {
+				navigate('/auth')
+			}
 		}
 		else login(data)
 		reset()
 	}
+
 	return (
 		<div className={styles.formWindow}>
 			<h1
