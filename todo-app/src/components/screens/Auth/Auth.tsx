@@ -27,7 +27,6 @@ const Auth: FC = () => {
 			return () => clearTimeout(timer)
 		}
 	}, [error, isSuccess])
-	console.log(isSuccess)
 
 	return (
 		<div className={styles.container}>

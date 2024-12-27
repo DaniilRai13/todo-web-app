@@ -8,7 +8,7 @@ import { useActions } from '../../../shared/hooks/useActions'
 const MainHeader: FC = () => {
 	const { user } = useTypedSelector(({ user }) => user)
 	const { logout } = useActions()
-	
+	console.log(user)
 	return (
 		<header className={styles.header}>
 			<NewTaskButton />
