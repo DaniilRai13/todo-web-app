@@ -6,7 +6,7 @@ import { Icon } from '../../../shared/LucidIcon'
 import styles from './NavigationLink.module.scss'
 
 const NavigationLink: FC<INavigateSideProps & { isOpen: boolean }> = ({ link, color, icon, name, isOpen }) => {
-	const setActive = ({ isActive }: { isActive: boolean }): string => isActive ? 'active' : ''
+	const setActive = ({ isActive }: { isActive: boolean }): string => isActive ? `${styles.active}` : ''
 
 	return (
 		<div
@@ -17,7 +17,7 @@ const NavigationLink: FC<INavigateSideProps & { isOpen: boolean }> = ({ link, co
 				className={setActive}
 				style={isOpen ? { padding: '12px 17px' } : { padding: '12px 0', justifyContent: 'center' }}
 			>
-				<Icon color={color} icon={icon} size={27}/>
+				<Icon color={color} icon={icon} size={27} />
 				<AnimatePresence>
 					{isOpen && <motion.div
 						initial={{ opacity: 0, width: 0 }}
