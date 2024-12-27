@@ -1,9 +1,10 @@
 import { createSlice } from '@reduxjs/toolkit'
 import { login, logout, register } from './user.actions'
 import { IProfileData } from '../../config/user.data'
+import { getUserFromStorage } from './user.localstorage'
 
 const initialState = {
-	user: null as IProfileData | null,
+	user: getUserFromStorage(),
 	isLoading: false,
 	isSuccess: false,
 	error: null as string | undefined | null,
