@@ -3,6 +3,7 @@ import { IAuthData } from '../interfaces/Auth.interface'
 import { auth } from '../config/firestore'
 import { IProfileData } from "../config/user.data";
 import { removeTokensStorage, saveToStorage } from "./auth.helper";
+import { removeUserStorage, saveUserToStorage } from "../store/user/user.localstorage";
 
 
 export const AuthService = {
@@ -39,16 +40,17 @@ export const AuthService = {
 				uid,
 				metadata: { creationTime }
 			} = user
-			const accessToken = await user.getIdToken()
-			saveToStorage({ refreshToken, accessToken })
-
-			return {
+			const userData = {
 				id: uid,
 				name: displayName,
 				email,
 				img: photoURL,
 				createdAt: creationTime
-			};
+			}
+			const accessToken = await user.getIdToken()
+			saveToStorage({ refreshToken, accessToken })
+			saveUserToStorage(userData)
+			return userData;
 
 		} catch (error) {
 			console.error('Error during login:', error);
@@ -57,6 +59,7 @@ export const AuthService = {
 	},
 	logout: () => {
 		removeTokensStorage()
+		removeUserStorage()
 	},
 	checkTokens: () => {
 		return localStorage.getItem('tokens')
