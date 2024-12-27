@@ -1,14 +1,21 @@
 import { motion } from "motion/react"
-import { FC, useState } from 'react'
+import { FC } from 'react'
 import { navigateSideProps } from '../../../config/pageRoutes'
 import { Icon } from '../../../shared/LucidIcon'
 import styles from '../Layout.module.scss'
 import NavigationLink from './NavigationLink'
-const Navigation: FC = () => {
-	const [isOpen, setIsOpen] = useState(true)
+import useAnimation from "../useAnimation"
+
+interface NavigationProps {
+	isOpen: boolean
+	setIsOpen: (isOpen: boolean) => void
+}
+
+const Navigation: FC<NavigationProps> = ({ isOpen, setIsOpen }) => {
+	const { getAsideWidth } = useAnimation({ isOpen })
 	return (
 		<motion.aside
-			animate={{ width: isOpen ? '15%' : '6%', padding: isOpen ? '40px 20px 20px 20px' : '40px 10px 20px' }}
+			animate={{ width: getAsideWidth(), padding: isOpen ? '40px 20px 20px 20px' : '40px 10px 20px' }}
 			transition={{ type: "spring" }}
 		>
 			{isOpen
