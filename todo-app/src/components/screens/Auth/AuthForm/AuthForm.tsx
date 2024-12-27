@@ -1,7 +1,7 @@
 import { FC } from 'react'
 import cn from 'classnames'
 import { SubmitHandler, useForm } from 'react-hook-form'
-import { NavLink, useNavigate } from 'react-router'
+import { NavLink } from 'react-router'
 import Button from '../../../../shared/Button/Button'
 import Field from '../../../../shared/form/Field'
 import styles from './AuthForm.module.scss'
@@ -14,21 +14,17 @@ const AuthForm: FC<{ name: string, isPage: boolean }> = ({ name, isPage }) => {
 		mode: 'onChange'
 	})
 	const { register: registerAction, login } = useActions()
-	const { isLoading, isSuccess } = useTypedSelector(({ user }) => user)
+	const { isLoading } = useTypedSelector(({ user }) => user)
 
-	const navigate = useNavigate()
 
 	const onSubmit: SubmitHandler<IAuthData> = (data) => {
 		if (isPage) {
 			registerAction(data)
-
-			if (isSuccess) {
-				navigate('/auth')
-			}
 		}
 		else login(data)
 		reset()
 	}
+
 
 	return (
 		<div className={styles.formWindow}>
