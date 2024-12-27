@@ -1,6 +1,6 @@
 import cn from 'classnames'
 import { FC, useEffect } from 'react'
-import { Route, Routes, useLocation } from 'react-router'
+import { Route, Routes, useLocation, useNavigate } from 'react-router'
 import styles from './Auth.module.scss'
 import AuthForm from './AuthForm/AuthForm'
 import Alert from '../../../shared/notification/Alert'
@@ -13,9 +13,13 @@ const Auth: FC = () => {
 	const { resetStatus } = useActions()
 	const isRegisterPage = pathname.includes('register')
 	const { error, isSuccess } = useTypedSelector(({ user }) => user)
+	const navigate = useNavigate()
 
 	useEffect(() => {
 		if (error || isSuccess) {
+			if (isSuccess) {
+				navigate('/auth')
+			}
 			const timer = setTimeout(() => {
 				resetStatus()
 			}, 2600)
@@ -23,6 +27,7 @@ const Auth: FC = () => {
 			return () => clearTimeout(timer)
 		}
 	}, [error, isSuccess])
+	console.log(isSuccess)
 
 	return (
 		<div className={styles.container}>
