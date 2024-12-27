@@ -4,8 +4,8 @@ export interface IAuthResponse {
 }
 
 export const saveToStorage = (data: IAuthResponse) => {
-  localStorage.setItem('user', JSON.stringify(data))
+  localStorage.setItem('tokens', JSON.stringify(data))
 }
 export const removeTokensStorage = () => {
-  localStorage.removeItem('user')
+  localStorage.removeItem('tokens')
 }

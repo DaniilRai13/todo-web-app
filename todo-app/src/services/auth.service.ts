@@ -59,6 +59,6 @@ export const AuthService = {
 		removeTokensStorage()
 	},
 	checkTokens: () => {
-		return localStorage.getItem('user')
+		return localStorage.getItem('tokens')
 	}
 }
