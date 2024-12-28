@@ -15,7 +15,7 @@ const Navigation: FC<NavigationProps> = ({ isOpen, setIsOpen }) => {
 	const { getAsideWidth } = useAnimation({ isOpen })
 	return (
 		<motion.aside
-			animate={{ width: getAsideWidth(), padding: isOpen ? '40px 20px 20px 20px' : '40px 10px 20px' }}
+			animate={{ width: getAsideWidth(), padding: isOpen ? '50px 0 30px 20px' : '50px 0 30px' }}
 			transition={{ type: "spring" }}
 		>
 			{isOpen
