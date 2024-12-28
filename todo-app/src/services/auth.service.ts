@@ -1,4 +1,4 @@
-import { createUserWithEmailAndPassword, signInWithEmailAndPassword } from "firebase/auth"
+import { createUserWithEmailAndPassword, signInWithEmailAndPassword, signOut } from "firebase/auth"
 import { IAuthData } from '../interfaces/Auth.interface'
 import { auth } from '../config/firestore'
 import { IProfileData } from "../config/user.data";
@@ -57,7 +57,8 @@ export const AuthService = {
 			throw error;
 		}
 	},
-	logout: () => {
+	logout: async () => {
+		await signOut(auth)
 		removeTokensStorage()
 		removeUserStorage()
 	},
