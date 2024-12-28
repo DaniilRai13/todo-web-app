@@ -15,7 +15,7 @@ const NavigationLink: FC<INavigateSideProps & { isOpen: boolean }> = ({ link, co
 			<NavLink
 				to={link}
 				className={setActive}
-				style={isOpen ? { padding: '12px 17px' } : { padding: '12px 0', justifyContent: 'center' }}
+				style={isOpen ? {} : { justifyContent: 'center' }}
 			>
 				<Icon color={color} icon={icon} size={27} />
 				<AnimatePresence>
