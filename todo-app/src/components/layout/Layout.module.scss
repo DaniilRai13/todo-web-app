@@ -1,52 +1,55 @@
-@import '../../assets/var.scss';
+@import "../../assets/var.scss";
 $bar-width: 15%;
 $aside-margin: 30px;
 
-.layout {
-	position: relative;
-	display: flex;
+.container {
+	margin: 0 auto;
+	padding: 40px;
+	max-width: 1440px;
+	box-sizing: border-box;
 	height: 100vh;
-	width: 100%;
 
-	aside {
-		position: fixed;
+	.layout {
+		position: relative;
 		display: flex;
-		flex-direction: column;
-		box-sizing: border-box;
-		gap: 20px;
-		top: $aside-margin;
-		left: $aside-margin;
-		padding: 40px 20px 20px;
-		overflow-y: scroll;
-		width: $bar-width;
-		max-width: 350px;
-		border-radius: 20px;
-		border: 3px solid #000;
-
-		&::-webkit-scrollbar {
-			display: none;
-		}
-
-		.sideOpened,
-		.sideClosed {
-			position: absolute;
-			top: 10px;
-			cursor: pointer;
-		}
-
-		.sideOpened {
-			right: 10px;
-		}
-
-		.sideClosed {
-			right: 35%;
-		}
-	}
-
-	.main {
-		margin-left: calc($bar-width + $aside-margin);
 		width: 100%;
-		padding: 20px;
-		overflow: auto;
+
+		aside {
+			position: fixed;
+			display: flex;
+			flex-direction: column;
+			box-sizing: border-box;
+			gap: 30px;
+			padding: 50px 0 30px 20px;
+			overflow-y: scroll;
+			width: 250px;
+			border-radius: 20px;
+			border: 3px solid #000;
+
+			&::-webkit-scrollbar {
+				display: none;
+			}
+
+			.sideOpened,
+			.sideClosed {
+				position: absolute;
+				top: 10px;
+				cursor: pointer;
+			}
+
+			.sideOpened {
+				right: 10px;
+			}
+
+			.sideClosed {
+				right: 32%;
+			}
+		}
+
+		.main {
+			padding-left: 30px;
+			width: 80%;
+			overflow: auto;
+		}
 	}
 }
