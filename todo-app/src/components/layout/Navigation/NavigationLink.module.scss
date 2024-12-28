@@ -1,19 +1,40 @@
-@import '../../../assets/var.scss';
+@import "../../../assets/var.scss";
 
 .nav__link {
 	a {
+		position: relative;
 		display: flex;
+		width: 100%;
 		align-items: center;
 		font-size: 1.3rem;
 		text-decoration: none;
 		color: black;
 		box-sizing: border-box;
-		padding: 12px 17px;
 
-		@media(hover:hover) {
+		&::after {
+			position: absolute;
+			content: "";
+			top: 0;
+			right: 0;
+			height: 100%;
+			width: 0;
+			border-bottom-left-radius: 100%;
+			border-top-left-radius: 100%;
+			background-color: #518cf3;
+			transition: 0.1s linear;
+		}
+
+		&.active {
+			&::after {
+				width: 4px;
+			}
+		}
+
+		@media (hover: hover) {
 			&:hover {
-				background-color: #c7c0bf70;
-				border-radius: 7px;
+				&::after {
+					width: 5px;
+				}
 			}
 		}
 
@@ -21,9 +42,8 @@
 			min-width: 27px;
 		}
 
-		>div {
+		> div {
 			margin-left: 10px;
 		}
 	}
-
 }
