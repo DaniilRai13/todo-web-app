@@ -1,9 +1,9 @@
 import { InputHTMLAttributes } from 'react'
-import { FieldError, FieldErrorsImpl, Merge } from 'react-hook-form'
+import { FieldError } from 'react-hook-form'
 
 export interface IFieldProps {
 	placeholder: string,
-	error?: FieldError | Merge<FieldError, FieldErrorsImpl<any>> | undefined
+	error?: FieldError | undefined
 }
 
 type TypeInputPropsField = InputHTMLAttributes<HTMLInputElement> & IFieldProps
