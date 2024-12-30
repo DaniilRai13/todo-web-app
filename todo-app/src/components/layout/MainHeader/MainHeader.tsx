@@ -8,13 +8,12 @@ import { useActions } from '../../../shared/hooks/useActions'
 const MainHeader: FC = () => {
 	const { user } = useTypedSelector(({ user }) => user)
 	const { logout } = useActions()
-	console.log(user)
 	return (
 		<header className={styles.header}>
 			<NewTaskButton />
 			<div className={styles.profile}>
 				<div className={styles.exit} onClick={logout}>
-					<Icon icon='LogOut' color='white' />
+					<Icon icon='LogOut' color='black' size={18} />
 					<h3>Log</h3>
 				</div>
 				<div className={styles.profileImg}><img alt='image' /></div>
