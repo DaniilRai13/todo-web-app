@@ -3,25 +3,25 @@
 	align-items: center;
 	padding: 20px 16px;
 	height: 30px;
-	background-color: #cdffcf;
+	background-color: #9bda9d;
 	color: white;
-	border: 2px solid #000;
+	border: none;
 	border-radius: 10px;
 	cursor: pointer;
-	transition: background-color .2s ease-in-out;
+	transition: background-color .15s ease-in-out;
 
 	svg {
 		font-size: 20px;
 	}
 
 	.text {
-		font-size: 20px;
-		margin-left: 20px;
-		letter-spacing: 1.4px;
-		color: #4f2986;
+		font-size: 18px;
+		margin-left: 13px;
+		letter-spacing: .5px;
+		color: #000000;
 	}
 
 	&:hover {
-		background-color: #9bda9d;
+		background-color: #81c583;
 	}
 }
