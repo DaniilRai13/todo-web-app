@@ -15,7 +15,11 @@ const AuthProvider: FC<{ children: ReactNode }> = ({ children }) => {
       navigate('/auth');
     }
     else if (tokens && user) {
-      navigate(location.pathname);
+      if (location.pathname !== '/auth') {
+        navigate(location.pathname);
+      } else {
+        navigate('/');
+      }
     }
   }, [user, tokens]);
 
