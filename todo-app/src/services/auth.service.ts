@@ -1,15 +1,36 @@
 import { createUserWithEmailAndPassword, signInWithEmailAndPassword, signOut } from "firebase/auth"
+import { doc, setDoc } from "firebase/firestore";
 import { IAuthData } from '../interfaces/Auth.interface'
-import { auth } from '../config/firestore'
+import { auth, db } from '../config/firestore'
 import { IProfileData } from "../config/user.data";
 import { removeTokensStorage, saveToStorage } from "./auth.helper";
 import { removeUserStorage, saveUserToStorage } from "../store/user/user.localstorage";
+import { userService } from "./user.service";
 
 
 export const AuthService = {
-	register: async ({ email, password }: IAuthData): Promise<{ message: string }> => {
+	register: async ({ email: registerEmail, password }: IAuthData): Promise<{ message: string }> => {
 		try {
-			await createUserWithEmailAndPassword(auth, email, password);
+			const userCredential = await createUserWithEmailAndPassword(auth, registerEmail, password);
+			const user = userCredential.user
+			const {
+				displayName,
+				email,
+				photoURL,
+				uid,
+				metadata: { creationTime }
+			} = user
+			const userData = {
+				profile: {
+					id: uid,
+					username: displayName,
+					email,
+					img: photoURL,
+					createdAt: creationTime
+				}
+			}
+
+			await setDoc(doc(db, "users", uid), userData);
 			return { message: 'User registered successfully' };
 		} catch (error: any) {
 			if (error.code === 'auth/email-already-in-use') {
@@ -33,24 +54,17 @@ export const AuthService = {
 			const user = userCredential.user;
 
 			const {
-				displayName,
-				email,
 				refreshToken,
-				photoURL,
-				uid,
-				metadata: { creationTime }
+				uid
 			} = user
-			const userData = {
-				id: uid,
-				name: displayName,
-				email,
-				img: photoURL,
-				createdAt: creationTime
-			}
+
+			const userProfile = await userService.getProfile(uid)
+			saveUserToStorage(userProfile)
+
 			const accessToken = await user.getIdToken()
 			saveToStorage({ refreshToken, accessToken })
-			saveUserToStorage(userData)
-			return userData;
+
+			return userProfile;
 
 		} catch (error) {
 			console.error('Error during login:', error);
