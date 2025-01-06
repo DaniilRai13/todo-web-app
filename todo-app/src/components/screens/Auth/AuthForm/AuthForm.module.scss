@@ -5,11 +5,7 @@
 	top: 50%;
 	transform: translateY(-50%);
 	width: 300px;
-	padding: 40px 30px;
-	border: 2px solid #000;
-	border-radius: 15px;
 	margin: 0 auto;
-	background-color: #fff;
 
 	.title {
 		font-size: 2rem;
@@ -35,8 +31,8 @@
 		margin-top: 15px;
 
 		.footerText {
-			font-size: 18px;
-			font-size: 400;
+			font-size: 16px;
+			font-weight: 400;
 
 			>a {
 				font-size: 600;
