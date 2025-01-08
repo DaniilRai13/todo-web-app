@@ -11,9 +11,9 @@ const useAnimation = ({ isOpen }: UseAnimationProps) => {
     if (windowWidth < 768) {
       return isOpen ? '150px' : '50px' // Мобильные устройства
     } else if (windowWidth < 1024) {
-      return isOpen ? '200px' : '70px' // Планшеты
+      return isOpen ? '170px' : '70px' // Планшеты
     } else {
-      return isOpen ? '250px' : '70px' // Десктопы
+      return isOpen ? '200px' : '70px' // Десктопы
     }
   }
 
