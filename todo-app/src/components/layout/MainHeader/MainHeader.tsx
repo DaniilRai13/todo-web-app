@@ -13,13 +13,13 @@ const MainHeader: FC = () => {
 			<NewTaskButton />
 			<div className={styles.profile}>
 				<div className={styles.exit} onClick={logout}>
-					<Icon icon='LogOut' color='black' size={18} />
+					<Icon icon='LogOut' color='black' size={16} />
 					<h3>Log</h3>
 				</div>
 				<div className={styles.profileImg}><img alt='image' /></div>
 				<div className={styles.info}>
 					<h3 className={styles.name}>
-						{user?.name ? user.name : 'User'}
+						{user?.username ? user.username : 'User'}
 					</h3>
 					<h5 className={styles.email}>
 						{user?.email}
