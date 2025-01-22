@@ -16,10 +16,12 @@ const AuthForm: FC<{ name: string, isPage: boolean }> = ({ name, isPage }) => {
 	const { register: registerAction, login } = useActions()
 	const { isLoading } = useTypedSelector(({ user }) => user)
 
+	const inputClassName = isPage ? styles.register : styles.login
 
 	const onSubmit: SubmitHandler<IAuthData> = (data) => {
 		if (isPage) {
 			registerAction(data)
+			reset()
 		}
 		else login(data)
 		reset()
@@ -43,7 +45,7 @@ const AuthForm: FC<{ name: string, isPage: boolean }> = ({ name, isPage }) => {
 						}
 					})}
 					placeholder='Email'
-					isPage={isPage}
+					className={inputClassName}
 					error={errors.email}
 				/>
 				<Field
@@ -56,7 +58,7 @@ const AuthForm: FC<{ name: string, isPage: boolean }> = ({ name, isPage }) => {
 					})}
 					placeholder='Password'
 					type='password'
-					isPage={isPage}
+					className={inputClassName}
 					error={errors.password}
 				/>
 				<Button
