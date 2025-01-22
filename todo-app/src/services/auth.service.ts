@@ -25,7 +25,7 @@ export const AuthService = {
 					id: uid,
 					username: displayName,
 					email,
-					img: photoURL,
+					img: photoURL || 'https://png.klev.club/uploads/posts/2024-06/png-klev-club-m6sy-p-znachok-profilya-png-21.png',
 					createdAt: creationTime
 				}
 			}
@@ -57,7 +57,6 @@ export const AuthService = {
 				refreshToken,
 				uid
 			} = user
-
 			const userProfile = await userService.getProfile(uid)
 			saveUserToStorage(userProfile)
 
