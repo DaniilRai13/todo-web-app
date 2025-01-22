@@ -1,68 +1,40 @@
-import { Controller, useForm } from 'react-hook-form'
-import { auth } from '../../../config/firestore'
-import Field from '../../../shared/form/Field'
 import Heading from '../../../shared/Heading/Heading'
 import styles from './Profile.module.scss'
-import { IProfileData } from '../../../config/user.data'
-import Button from '../../../shared/Button/Button'
-import { useProfile } from './useProfile'
-import ImageUpload from '../../../shared/form/ImageUpload/ImageUpload'
-import { useState } from 'react'
-import { userService } from '../../../services/user.service'
+import { useEffect } from 'react'
+import Alert from '../../../shared/notification/Alert'
+import { AnimatePresence } from 'framer-motion'
+import { saveUserToStorage } from '../../../store/user/user.localstorage'
+import ProfileChangeForm from './ProfileChangeForm/ProfileChangeForm'
+import PasswordChangeForm from './PasswordChangeForm/PasswordChangeForm'
+import { useTypedSelector } from '../../../shared/hooks/useTypedSelector'
+import { useActions } from '../../../shared/hooks/useActions'
 
 const Profile = () => {
-	console.log(auth)
-	const { register, handleSubmit, formState: { errors }, control } = useForm<IProfileData>({
-		mode: 'onChange'
-	})
-	const [password, setPassword] = useState<string>('')
-	const { onSubmit, user } = useProfile()
-	const handleSave = (data: IProfileData) => {
-		if (password) {
-			userService.updateUserPassword(password)
+
+	const { user, isSuccess, error } = useTypedSelector(({ user }) => user)
+	const { resetStatus } = useActions()
+	useEffect(() => {
+		if (isSuccess && user) saveUserToStorage(user)
+		if (error || isSuccess) {
+			const timer = setTimeout(() => {
+				resetStatus()
+			}, 2600)
+
+			return () => clearTimeout(timer)
 		}
-		onSubmit({ ...user, ...data })
-	}
+	}, [error, isSuccess, user])
+
 	return (
 		<section className={styles.profile}>
 			<Heading title='Account Information' />
-			<form
-				className={styles.items}
-				onSubmit={handleSubmit(handleSave)}
-			>
-				<Controller
-					name='img'
-					control={control}
-					render={({ field }) => <ImageUpload
-						currentImageUrl={user?.img || 'https://png.klev.club/uploads/posts/2024-06/png-klev-club-m6sy-p-znachok-profilya-png-21.png'}
-						onImageChange={(file) => field.onChange(file)} />}
-				/>
-				<div
-					className={styles.mainInfo}
-				>
-					<Field {...register('username', {
-
-					})}
-						placeholder='Username'
-						defaultValue={user?.username || ''} />
-					<Field {...register('email', {
-
-					})}
-						placeholder='Email'
-						defaultValue={user?.email || ''} />
-
-					<Field
-						value={password}
-						placeholder='Password'
-						name='password'
-						onChange={(e) => setPassword(e.target.value)}
-						type='password'
-					/>
-					<Button
-						title='Save'
-					/>
-				</div>
-			</form>
+			<div className={styles.items}>
+				<ProfileChangeForm />
+				<PasswordChangeForm />
+			</div>
+			<AnimatePresence>
+				{error && <Alert type='error' message={error} />}
+				{isSuccess && <Alert type='success' />}
+			</AnimatePresence>
 		</section>
 	)
 }
