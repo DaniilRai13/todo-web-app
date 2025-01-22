@@ -1,7 +1,9 @@
 import { IProfileData } from "../../config/user.data"
 
 export const saveUserToStorage = (data: IProfileData) => {
-  localStorage.setItem('user', JSON.stringify(data))
+  if (data) {
+    localStorage.setItem('user', JSON.stringify(data))
+  }
 }
 export const getUserFromStorage = (): IProfileData | null => {
   const user = localStorage.getItem('user');
