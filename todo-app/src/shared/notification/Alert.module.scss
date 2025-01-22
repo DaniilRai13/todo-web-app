@@ -12,16 +12,20 @@
   &.error {
     border-color: #f78080;
     color: #dd6868e8;
-    font-weight: 400;;
+    font-weight: 400;
   }
   &.success {
     border-color: #49c355;
     color: #7fd988;
   }
 
-  .title{
-    margin-bottom: 10px;
+  .title {
     color: #843030;
+    font-size: 22px;
     font-weight: 600;
+  }
+  .text {
+    margin-top: 10px;
+    font-size: 18px;
   }
 }
