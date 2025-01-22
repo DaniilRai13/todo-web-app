@@ -13,10 +13,10 @@ interface ITask {
 
 export interface IProfileData {
 	id: string
-	name: string | null
+	username: string | null
 	img: string | null
-	email: string | null
-	createdAt: string | undefined
+	email: string
+	createdAt: string
 }
 
 interface ITasksData {
