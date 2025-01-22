@@ -16,7 +16,9 @@ const MainHeader: FC = () => {
 					<Icon icon='LogOut' color='black' size={16} />
 					<h3>Log</h3>
 				</div>
-				<div className={styles.profileImg}><img alt='image' /></div>
+				<div className={styles.profileImg}>
+					<img alt='image' src={user?.img || ''} />
+				</div>
 				<div className={styles.info}>
 					<h3 className={styles.name}>
 						{user?.username ? user.username : 'User'}
