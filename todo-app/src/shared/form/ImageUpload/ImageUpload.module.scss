@@ -1,0 +1,12 @@
+.imageContainer {
+  .image {
+    border-radius: 50%;
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    border: 2px solid #989898;
+    width: 150px;
+    height: 150px;
+    cursor: pointer;
+  }
+}
