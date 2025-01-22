@@ -1,4 +1,4 @@
-@import '../../../../assets/var.scss';
+@import "../../../../assets/var.scss";
 
 .formWindow {
 	position: relative;
@@ -10,7 +10,7 @@
 	.title {
 		font-size: 2rem;
 		margin-bottom: 20px;
-		transition: color .1s ease-in-out;
+		transition: color 0.1s ease-in-out;
 
 		&.register {
 			color: $color-red;
@@ -22,6 +22,21 @@
 	}
 
 	.form {
+		.register {
+			label {
+				input {
+					border-color: $color-red;
+				}
+			}
+		}
+
+		.login {
+			label {
+				input {
+					border-color: $color-blue;
+				}
+			}
+		}
 		.btn_register {
 			background-color: $color-red;
 		}
@@ -34,7 +49,7 @@
 			font-size: 16px;
 			font-weight: 400;
 
-			>a {
+			> a {
 				font-size: 600;
 				color: $color-blue;
 				margin-left: 7px;

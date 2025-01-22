@@ -1,4 +1,4 @@
-@import '../../assets/var.scss';
+@import "../../assets/var.scss";
 
 .field {
 	position: relative;
@@ -22,21 +22,5 @@
 		left: 5px;
 		font-size: 14px;
 		color: rgb(237, 31, 31);
-	}
-
-	&.register {
-		label {
-			input {
-				border-color: $color-red;
-			}
-		}
-	}
-
-	&.login {
-		label {
-			input {
-				border-color: $color-blue;
-			}
-		}
 	}
 }
