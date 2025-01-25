@@ -1,8 +1,8 @@
 import { IProfileData } from './../../config/user.data';
 import { createAsyncThunk } from '@reduxjs/toolkit'
 import { IAuthData } from '../../interfaces/Auth.interface'
-import { AuthService } from '../../services/auth.service'
-import { userService } from '../../services/user.service'
+import { AuthService } from '../../services/authService/auth.service'
+import { userService } from '../../services/userService/user.service'
 
 export const register = createAsyncThunk(
 	'user/register',

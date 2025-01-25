@@ -1,6 +1,6 @@
 import { FC, ReactNode, useEffect } from 'react'
 import { useTypedSelector } from '../shared/hooks/useTypedSelector'
-import { AuthService } from '../services/auth.service'
+import { AuthService } from '../services/authService/auth.service'
 import { useLocation, useNavigate } from 'react-router'
 
 const AuthProvider: FC<{ children: ReactNode }> = ({ children }) => {
