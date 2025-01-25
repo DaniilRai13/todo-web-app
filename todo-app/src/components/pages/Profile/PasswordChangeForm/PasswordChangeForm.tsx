@@ -1,27 +1,35 @@
-import { FC } from "react";
+import { FC, useState } from "react";
 import Button from "../../../../shared/Button/Button";
 import Field from "../../../../shared/form/Field";
 import { useForm } from "react-hook-form";
 import styles from './PasswordChangeForm.module.scss'
 import Heading from "../../../../shared/Heading/Heading";
 import { useActions } from "../../../../shared/hooks/useActions";
-import { useTypedSelector } from "../../../../shared/hooks/useTypedSelector";
 import { useProfile } from "../useProfile";
+
 interface IPasswordForm {
   password: string
   newPassword: string
 }
 
 const PasswordChangeForm: FC = () => {
-  const { register, handleSubmit, formState: { errors } } = useForm<IPasswordForm>({
+  const { register, handleSubmit, formState: { errors }, reset } = useForm<IPasswordForm>({
     mode: 'onChange'
   })
 
   const { updateUserPassword } = useActions()
   const { isLoading } = useProfile()
-  const onSubmit = (data: IPasswordForm) => {
-    if (data.password !== data.newPassword) {
-      updateUserPassword(data)
+  const [isPasswordChanging, setIsPasswordChanging] = useState(false);
+
+  const onSubmit = async (data: IPasswordForm) => {
+    setIsPasswordChanging(true);
+    try {
+      await updateUserPassword(data);
+      reset();
+    } catch (error) {
+      console.error(error);
+    } finally {
+      setIsPasswordChanging(false);
     }
   }
 
@@ -31,6 +39,7 @@ const PasswordChangeForm: FC = () => {
       <div className={styles.mainInfo}>
         <Field
           {...register('password', {
+            required: 'This field is required',
             minLength: {
               value: 6,
               message: 'Password must be at least 6 characters',
@@ -42,6 +51,7 @@ const PasswordChangeForm: FC = () => {
         />
         <Field
           {...register('newPassword', {
+            required: 'This field is required',
             minLength: {
               value: 6,
               message: 'Password must be at least 6 characters',
@@ -51,7 +61,7 @@ const PasswordChangeForm: FC = () => {
           type="password"
           error={errors.newPassword}
         />
-        <Button title="Change Password" isLoading={isLoading} />
+        <Button title="Change Password" isLoading={isPasswordChanging} disabled={isLoading} />
       </div>
     </form>
   );
