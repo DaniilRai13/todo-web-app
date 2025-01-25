@@ -1,17 +1,25 @@
 import { SubmitHandler } from "react-hook-form"
 import { IProfileData } from "../../../config/user.data"
 import { useTypedSelector } from "../../../shared/hooks/useTypedSelector"
-import { userService } from "../../../services/user.service"
+import { useActions } from '../../../shared/hooks/useActions';
 
 export const useProfile = () => {
-  const { user } = useTypedSelector(({ user }) => user)
+  const { user, error, isSuccess, isLoading } = useTypedSelector(({ user }) => user)
+  const { updateProfile, resetStatus } = useActions()
+
   const onSubmit: SubmitHandler<IProfileData> = (data: IProfileData) => {
+    console.log(data)
     if (user) {
-      userService.updateProfile(user?.id, data)
+      updateProfile({ id: user?.id, data })
     }
   }
+
   return {
     user,
+    error,
+    isSuccess,
+    resetStatus,
+    isLoading,
     onSubmit
   }
 }
