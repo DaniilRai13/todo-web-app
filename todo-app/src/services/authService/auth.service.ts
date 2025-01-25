@@ -1,11 +1,11 @@
 import { createUserWithEmailAndPassword, signInWithEmailAndPassword, signOut } from "firebase/auth"
 import { doc, setDoc } from "firebase/firestore";
-import { IAuthData } from '../interfaces/Auth.interface'
-import { auth, db } from '../config/firestore'
-import { IProfileData } from "../config/user.data";
+import { IAuthData } from '../../interfaces/Auth.interface'
+import { auth, db } from '../../config/firestore'
+import { IProfileData } from "../../config/user.data";
 import { removeTokensStorage, saveToStorage } from "./auth.helper";
-import { removeUserStorage, saveUserToStorage } from "../store/user/user.localstorage";
-import { userService } from "./user.service";
+import { removeUserStorage, saveUserToStorage } from "../../store/user/user.localstorage";
+import { userService } from "../userService/user.service";
 
 
 export const AuthService = {
