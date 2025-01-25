@@ -1,10 +1,26 @@
 @import "../../../assets/var.scss";
+
 .profile {
   color: black;
   font-size: 28px;
   .items {
     display: flex;
-    flex-direction: column;
+    flex-wrap: wrap;
+    align-items: center;
     gap: 50px;
+
+    button {
+      background-color: $color-blue;
+      &:disabled {
+        background-color: $color-blue-disabled;
+        &:hover {
+          background-color: $color-blue-disabled;
+        }
+      }
+
+      &:hover {
+        background-color: $color-blue-hover;
+      }
+    }
   }
 }
