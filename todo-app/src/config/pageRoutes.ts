@@ -16,7 +16,7 @@ export interface INavigateSideProps {
 	color: string
 	link: string
 }
-type IconNames = keyof typeof icons
+export type IconNames = keyof typeof icons
 export const navigateSideProps: INavigateSideProps[] = [
 	{
 		name: 'Overview',
