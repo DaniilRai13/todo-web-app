@@ -8,22 +8,25 @@ import './index.css'
 import { Provider } from 'react-redux'
 import { store } from './store/store.ts'
 import AuthProvider from './provider/AuthProvider.tsx'
+import ModalProvider from './provider/ModalProvider.tsx'
 
 createRoot(document.getElementById('root') as HTMLElement).render(
   <StrictMode>
     <Provider store={store}>
       <BrowserRouter>
         <AuthProvider>
-          <Routes>
-            <Route
-              path={pageRoutes.home + '*'}
-              element={<App />}
-            />
-            <Route
-              path={pageRoutes.auth + '/*'}
-              element={<Auth />}
-            />
-          </Routes>
+          <ModalProvider>
+            <Routes>
+              <Route
+                path={pageRoutes.home + '*'}
+                element={<App />}
+              />
+              <Route
+                path={pageRoutes.auth + '/*'}
+                element={<Auth />}
+              />
+            </Routes>
+          </ModalProvider>
         </AuthProvider>
       </BrowserRouter>
     </Provider>
