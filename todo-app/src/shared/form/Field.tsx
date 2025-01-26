@@ -3,7 +3,7 @@ import { forwardRef } from 'react'
 import styles from './field.module.scss'
 import { IField } from './form.interface'
 
-const Field = forwardRef<HTMLInputElement, IField>(({ error, isPage, className, placeholder, type = 'text', style, ...rest }, ref) => {
+const Field = forwardRef<HTMLInputElement, IField>(({ error, className, placeholder, type = 'text', style, ...rest }, ref) => {
 	return (
 		<div
 			className={cn(styles.field, className)}
