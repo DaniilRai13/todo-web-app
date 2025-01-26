@@ -1,7 +1,8 @@
 @import "../../assets/var.scss";
 
 .button {
-	display: block;
+	display: flex;
+	align-items: center;
 	padding: 10px 25px;
 	background-color: $color-blue;
 	border: none;
@@ -11,6 +12,12 @@
 	font-size: 1.1rem;
 	cursor: pointer;
 	transition: background-color 0.1s ease-in-out;
+	svg{
+		margin-right: 10px;
+	}
+	h3{
+		font-size: 18px;
+	}
 	&:disabled {
 		cursor: default;
 	}
