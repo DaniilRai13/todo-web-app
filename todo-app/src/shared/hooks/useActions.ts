@@ -3,10 +3,12 @@ import { useMemo } from 'react'
 import { useDispatch } from 'react-redux'
 import { resetStatus } from '../../store/user/userSlice.ts'
 import * as userActions from '../../store/user/user.actions.ts'
+import * as taskActions from '../../store/tasks/tasks.actions.ts'
 
 const rootActions = {
 	resetStatus,
-	...userActions
+	...userActions,
+	...taskActions
 }
 
 export const useActions = () => {
