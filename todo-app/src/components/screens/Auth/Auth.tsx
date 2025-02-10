@@ -1,12 +1,12 @@
 import cn from 'classnames'
+import { AnimatePresence } from 'framer-motion'
 import { FC, useEffect } from 'react'
 import { Route, Routes, useLocation, useNavigate } from 'react-router'
+import { useActions } from '../../../shared/hooks/useActions'
+import { useTypedSelector } from '../../../shared/hooks/useTypedSelector'
+import Alert from '../../../shared/notification/Alert'
 import styles from './Auth.module.scss'
 import AuthForm from './AuthForm/AuthForm'
-import Alert from '../../../shared/notification/Alert'
-import { useTypedSelector } from '../../../shared/hooks/useTypedSelector'
-import { useActions } from '../../../shared/hooks/useActions'
-import { AnimatePresence } from 'framer-motion'
 
 const Auth: FC = () => {
 	const { pathname } = useLocation()
@@ -17,7 +17,7 @@ const Auth: FC = () => {
 
 	useEffect(() => {
 		if (error || isSuccess) {
-			if (isSuccess) {
+			if (isSuccess && isRegisterPage) {
 				navigate('/auth')
 			}
 			const timer = setTimeout(() => {
@@ -26,7 +26,7 @@ const Auth: FC = () => {
 
 			return () => clearTimeout(timer)
 		}
-	}, [error, isSuccess])
+	}, [error, isRegisterPage, isSuccess, navigate, resetStatus])
 
 	return (
 		<div className={styles.container}>
