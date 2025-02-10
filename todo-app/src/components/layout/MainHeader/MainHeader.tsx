@@ -1,16 +1,27 @@
 import { FC } from 'react'
-import NewTaskButton from '../../../shared/create-task-button/NewTaskButton'
 import styles from './MainHeader.module.scss'
 import { useTypedSelector } from '../../../shared/hooks/useTypedSelector'
 import { Icon } from '../../../shared/LucidIcon'
 import { useActions } from '../../../shared/hooks/useActions'
+import Button from '../../../shared/Button/Button'
+import { useModalActions } from '../../../provider/ModalProvider'
+import CreateTaskModal from '../../../shared/Modal/CreateTaskModal'
 
 const MainHeader: FC = () => {
 	const { user } = useTypedSelector(({ user }) => user)
 	const { logout } = useActions()
+	const { setOpen } = useModalActions()
 	return (
 		<header className={styles.header}>
-			<NewTaskButton />
+			<Button
+				title='New Task'
+				icon='Plus'
+				size={20}
+				color='black'
+				style={{ color: 'black' }}
+				onClick={() => setOpen(true)}
+			/>
+			<CreateTaskModal />
 			<div className={styles.profile}>
 				<div className={styles.exit} onClick={logout}>
 					<Icon icon='LogOut' color='black' size={16} />
