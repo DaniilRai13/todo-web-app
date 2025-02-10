@@ -15,6 +15,7 @@ function App() {
       >
         <Route index element={<Navigate to={'/overview'}/>} />
         <Route path='overview' element={<Home />} />
+        <Route path='todo-list' element={<Home />} />
         <Route path='calendar' element={<Calendar />} />
         <Route path='profile' element={<Profile />} />
       </Route>
