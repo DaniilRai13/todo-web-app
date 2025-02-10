@@ -1,7 +1,7 @@
 import { doc, getDoc, setDoc } from "firebase/firestore";
 import { db, auth } from "../../config/firestore";
 import { IProfileData } from "../../config/user.data";
-import { EmailAuthProvider, reauthenticateWithCredential, sendEmailVerification, updateEmail, updatePassword } from "firebase/auth";
+import { EmailAuthProvider, reauthenticateWithCredential, updateEmail, updatePassword } from "firebase/auth";
 
 export const userService = {
   getProfile: async (id: string): Promise<IProfileData> => {

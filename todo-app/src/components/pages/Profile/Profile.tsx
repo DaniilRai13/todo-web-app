@@ -13,6 +13,7 @@ const Profile = () => {
 
 	const { user, isSuccess, error } = useTypedSelector(({ user }) => user)
 	const { resetStatus } = useActions()
+	
 	useEffect(() => {
 		if (isSuccess && user) saveUserToStorage(user)
 		if (error || isSuccess) {
