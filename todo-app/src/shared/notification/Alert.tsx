@@ -1,7 +1,7 @@
-import { FC } from 'react'
 import cn from 'classnames'
-import styles from './Alert.module.scss'
 import { motion } from 'framer-motion'
+import { FC } from 'react'
+import styles from './Alert.module.scss'
 
 const Alert: FC<{ type: string, message?: string }> = ({ type, message }) => {
   return (
@@ -19,11 +19,11 @@ const Alert: FC<{ type: string, message?: string }> = ({ type, message }) => {
     >
       <h3 className={styles.title}>
         {type === 'success' ?
-          'Success' : 'Erorr'
+          'Success' : 'Error'
         }
       </h3>
       {message && <h4 className={styles.text}>
-        {message.split('Error: ')}
+        {message}
       </h4>}
     </motion.div>
   )
