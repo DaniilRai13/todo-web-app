@@ -1,14 +1,13 @@
-interface ITask {
+export interface ITask {
 	id: string
-	name: string
-	status: 'process' | 'completed' | 'review' // Можно ограничить статусами
-	startDate: string // Строка, содержащая дату и время (ISO 8601)
-	endDate: string // Строка, содержащая дату и время (ISO 8601)
-	priority: 'low' | 'medium' | 'high' // Можно использовать перечисление для приоритетов
-	assignedTo: string
+	title: string
+	status: 'process' | 'completed' | 'review'
+	startDate: string
+	endDate: string
+	priority: 'low' | 'medium' | 'high'
 	description: string
-	createdAt: string // Дата и время создания задачи
-	updatedAt: string // Дата и время последнего обновления задачи
+	createdAt: string
+	updatedAt: string
 }
 
 export interface IProfileData {
@@ -19,7 +18,7 @@ export interface IProfileData {
 	createdAt: string
 }
 
-interface ITasksData {
+export interface ITasksData {
 	profile: IProfileData
 	tasks: ITask[]
 }
