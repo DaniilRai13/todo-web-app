@@ -1,33 +1,32 @@
+import { FC, useState } from 'react'
 import { Controller, useForm } from 'react-hook-form'
-import ImageUpload from '../../../../shared/form/ImageUpload/ImageUpload';
-import { IProfileData } from '../../../../config/user.data';
-import Field from '../../../../shared/form/Field';
-import Button from '../../../../shared/Button/Button';
-import { useProfile } from '../useProfile';
-import styles from './ProfileChangeForm.module.scss';
-import { FC, useState } from 'react';
-import Heading from '../../../../shared/Heading/Heading';
-import { userService } from '../../../../services/userService/user.service';
+import { IProfileData } from '../../../../config/user.data'
+import Button from '../../../../shared/Button/Button'
+import Field from '../../../../shared/form/Field'
+import ImageUpload from '../../../../shared/form/ImageUpload/ImageUpload'
+import Heading from '../../../../shared/Heading/Heading'
+import { useProfile } from '../useProfile'
+import styles from './ProfileChangeForm.module.scss'
 
 const ProfileChangeForm: FC = () => {
   const { register, handleSubmit, formState: { errors }, control } = useForm<IProfileData>({
     mode: 'onChange'
   })
 
-  const { onSubmit, user, isLoading } = useProfile()
-  const [isProfileChanging, setIsProfileChanging] = useState(false);
+  const { onSubmit, updateUserEmail, user, isLoading } = useProfile()
+  const [isProfileChanging, setIsProfileChanging] = useState(false)
 
   const handleSave = async (data: IProfileData) => {
     setIsProfileChanging(true)
     try {
       if (data.email !== user?.email) {
-        await userService.updateUserEmail(data.email)
+        updateUserEmail({ email: data.email })
       }
-      await onSubmit({ ...user, ...data });
+      await onSubmit({ ...user, ...data })
     } catch (error) {
-      console.error(error);
+      console.error(error)
     } finally {
-      setIsProfileChanging(false);
+      setIsProfileChanging(false)
     }
   }
 
@@ -64,4 +63,4 @@ const ProfileChangeForm: FC = () => {
   )
 }
 
-export default ProfileChangeForm;
+export default ProfileChangeForm
