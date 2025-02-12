@@ -1,31 +1,25 @@
 import { FormControl, InputLabel, MenuItem, Select as MuiSelect } from '@mui/material'
-import { SelectChangeEvent } from '@mui/material/Select';
-import { FC, useState } from 'react'
+import { FC } from 'react'
 
 interface ISelect {
   title: string
   options: string[]
+  value: string
+  classNames?: string
   changeOptionValue: (option: string) => void
 }
 
-const Select: FC<ISelect> = (({ title, options, changeOptionValue }) => {
-  const [optionValue, setOption] = useState(options[0]);
-  console.log(optionValue)
-
-  const handleChange = (event: SelectChangeEvent) => {
-    setOption(event.target.value);
-  };
+const Select: FC<ISelect> = (({ title, options, value, changeOptionValue,classNames }) => {
   return (
-    <FormControl sx={{ m: 1, minWidth: 120 }} size="small">
+    <FormControl sx={{ m: 1, minWidth: 120 }} size="small" className={classNames}>
       <InputLabel id="demo-select-small-label">{title}</InputLabel>
       <MuiSelect
         labelId="demo-select-small-label"
         id="demo-select-small"
-        value={optionValue}
+        value={value}
         label={title}
         onChange={(e) => {
           changeOptionValue(e.target.value)
-          handleChange(e)
         }}
       >
         {options.map((option) =>
