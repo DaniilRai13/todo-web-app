@@ -57,9 +57,9 @@ export const userService = {
     } catch (error: unknown) {
       if (error instanceof FirebaseError) {
         if (error.code === "auth/invalid-credential") {
-          throw new Error("Incorrect current password.")
+          throw new Error("Incorrect current user.")
         } else if (error.code === "auth/requires-recent-login") {
-          throw new Error("You need to sign in again to update your password.")
+          throw new Error("You need to sign in again to update your email.")
         }
       }
       throw new Error("Failed to update the email.")
