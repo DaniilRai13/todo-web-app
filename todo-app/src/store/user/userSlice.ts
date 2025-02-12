@@ -1,6 +1,6 @@
 import { createSlice } from '@reduxjs/toolkit'
 import { IProfileData } from '../../config/user.data'
-import { login, logout, register, updateProfile, updateUserPassword } from './user.actions'
+import { login, logout, register, updateProfile, updateUserEmail, updateUserPassword } from './user.actions'
 import { getUserFromStorage } from './user.localstorage'
 
 const initialState = {
@@ -96,6 +96,20 @@ export const userSlice = createSlice({
 			state.error = null;
 		})
 		builder.addCase(updateUserPassword.rejected, (state, { error }) => {
+			state.isLoading = false;
+			state.isSuccess = false;
+			state.error = error.message;
+		})
+
+		builder.addCase(updateUserEmail.pending, (state) => {
+			state.isLoading = true
+		})
+		builder.addCase(updateUserEmail.fulfilled, (state) => {
+			state.isLoading = false
+			state.isSuccess = true;
+			state.error = null;
+		})
+		builder.addCase(updateUserEmail.rejected, (state, { error }) => {
 			state.isLoading = false;
 			state.isSuccess = false;
 			state.error = error.message;
