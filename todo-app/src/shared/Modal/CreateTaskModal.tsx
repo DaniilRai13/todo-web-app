@@ -1,30 +1,33 @@
 import { FC } from 'react'
-import Dialog from '@mui/material/Dialog';
-import { DialogActions } from '@mui/material';
-import Button from '../Button/Button';
-import { ITask } from '../../config/user.data';
-import { Controller, useForm } from 'react-hook-form';
-import { useModalActions, useModalValue } from '../../provider/ModalProvider';
-import Field from '../form/Field';
-import { generateId } from '../../config/generateId';
-import Select from '../Select';
-import DateTimeRange from '../DateTimeRange/DateTimeRange';
-import dayjs from 'dayjs';
+
+import { DialogActions } from '@mui/material'
+import Dialog from '@mui/material/Dialog'
+import dayjs from 'dayjs'
+
+import { Controller, useForm } from 'react-hook-form'
+import { generateId } from '../../config/generateId'
+import { ITask } from '../../config/user.data'
+import { useModalActions, useModalValue } from '../../provider/ModalProvider'
+import Button from '../Button/Button'
+import DateTimeRange from '../DateTimeRange/DateTimeRange'
+import Field from '../form/Field'
+import Select from '../Select'
+import styles from './CreateTaskModal.module.scss'
 
 type ITaskFormProps = Omit<ITask, 'createdAt' | 'updatedAt' | 'id' | 'status'>
 
 const CreateTaskModal: FC = () => {
-  const { register, handleSubmit, formState: { errors }, control } = useForm<ITaskFormProps>({
+  const { register, handleSubmit, formState: { errors }, control, reset } = useForm<ITaskFormProps>({
     mode: 'onChange'
   })
   const { isOpen } = useModalValue()
   const { setOpen } = useModalActions()
 
-  const priorityOprions = ['low', 'medium', 'high']
+  const priorityOptions = ['low', 'medium', 'high']
 
   const handleClose = () => {
-    setOpen(false);
-  };
+    setOpen(false)
+  }
 
   const onSubmit = (data: ITaskFormProps) => {
     console.log(data.startDate)
@@ -35,26 +38,36 @@ const CreateTaskModal: FC = () => {
       updatedAt: JSON.stringify(new Date()),
       id: generateId()
     })
+    // reset({
+    //   title: '',
+    //   description: '',
+    //   priority: 'low',
+    //   startDate: dayjs().format('YYYY-MM-DDTHH:mm'),
+    //   endDate: dayjs().add(1, 'day').format('YYYY-MM-DDTHH:mm')
+    // })
   }
 
   return (
     <Dialog
       open={isOpen}
       onClose={handleClose}
+      className={styles.modal}
     >
-      <form onSubmit={handleSubmit(onSubmit)}>
+      <form onSubmit={handleSubmit(onSubmit)} className={styles.form}>
         <Field
           {...register('title',
             {
               required: 'This field is required!'
             }
           )}
+          className={styles.modalField}
           placeholder='Title'
           error={errors.title}
         />
         <Field
           {...register('description')}
           placeholder='Description'
+          className={styles.modalField}
           error={errors.description}
         />
         <Controller
@@ -63,7 +76,9 @@ const CreateTaskModal: FC = () => {
           defaultValue='low'
           render={({ field }) => <Select
             title='Priority'
-            options={priorityOprions}
+            value={field.value}
+            options={priorityOptions}
+            classNames={styles.select}
             changeOptionValue={(option) => field.onChange(option)}
           />}
         />
@@ -75,6 +90,7 @@ const CreateTaskModal: FC = () => {
             render={({ field }) => <DateTimeRange
               currentValue={field.value}
               title='Start of task'
+              classNames={styles.dataPicker}
               changeTimeValue={(time) => field.onChange(time)}
             />}
           />
@@ -85,12 +101,13 @@ const CreateTaskModal: FC = () => {
             render={({ field }) => <DateTimeRange
               currentValue={field.value}
               title='End of Task'
+              classNames={styles.dataPicker}
               changeTimeValue={(time) => field.onChange(time)}
             />}
           />
         </div>
-        <DialogActions>
-          <Button title='Cancel' onClick={handleClose} />
+        <DialogActions className={styles.buttonContainer}>
+          <Button type='button' title='Cancel' onClick={handleClose} />
           <Button type="submit" title='Create' />
         </DialogActions>
       </form>
