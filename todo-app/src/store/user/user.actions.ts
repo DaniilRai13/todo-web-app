@@ -58,3 +58,14 @@ export const updateUserPassword = createAsyncThunk<void, { password: string, new
 		}
 	}
 )
+export const updateUserEmail = createAsyncThunk<void, { email: string }>(
+	'user/updateUserEmail',
+	async ({email}, { rejectWithValue }) => {
+		try {
+			await userService.updateUserEmail(email)
+		} catch (error: unknown) {
+			const errorEdit = error instanceof Error ? error.message : 'An error occurred'
+			return rejectWithValue(errorEdit)
+		}
+	}
+)
