@@ -1,11 +1,11 @@
 import { SubmitHandler } from "react-hook-form"
 import { IProfileData } from "../../../config/user.data"
 import { useTypedSelector } from "../../../shared/hooks/useTypedSelector"
-import { useActions } from '../../../shared/hooks/useActions';
+import { useActions } from '../../../shared/hooks/useActions'
 
 export const useProfile = () => {
   const { user, error, isSuccess, isLoading } = useTypedSelector(({ user }) => user)
-  const { updateProfile, resetStatus } = useActions()
+  const { updateProfile, updateUserEmail, resetStatus } = useActions()
 
   const onSubmit: SubmitHandler<IProfileData> = (data: IProfileData) => {
     console.log(data)
@@ -20,6 +20,7 @@ export const useProfile = () => {
     isSuccess,
     resetStatus,
     isLoading,
+    updateUserEmail,
     onSubmit
   }
 }
