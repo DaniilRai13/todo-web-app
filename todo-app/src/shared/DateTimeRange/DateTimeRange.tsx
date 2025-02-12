@@ -1,30 +1,30 @@
-import { useState } from 'react';
-import dayjs, { Dayjs } from 'dayjs';
-import { DemoContainer, DemoItem } from '@mui/x-date-pickers/internals/demo';
-import { DateTimePicker } from '@mui/x-date-pickers';
+import { DateTimePicker } from '@mui/x-date-pickers'
+import { DemoContainer, DemoItem } from '@mui/x-date-pickers/internals/demo'
+import dayjs from 'dayjs'
 interface IDateTime {
   title: string
   currentValue: string
+  classNames?: string
   changeTimeValue: (value: string | undefined) => void
 }
-export default function DateTimeRange({ currentValue, title, changeTimeValue }: IDateTime) {
-  const [value, setValue] = useState<Dayjs | null>(dayjs(currentValue));
-
+export default function DateTimeRange({ currentValue, title, changeTimeValue, classNames }: IDateTime) {
   return (
-    <DemoContainer
-      components={[
-        'DateTimePicker'
-      ]}
-    >
-      <DemoItem label={title} component="DateTimePicker">
-        <DateTimePicker
-          value={value}
-          onChange={(newValue) => {
-            setValue(newValue)
-            changeTimeValue(newValue?.format('YYYY-MM-DDTHH:mm'))
-          }}
-        />
-      </DemoItem>
-    </DemoContainer>
-  );
+    <div className={classNames}>
+      <DemoContainer
+        components={[
+          'DateTimePicker'
+        ]}
+
+      >
+        <DemoItem label={title} component="DateTimePicker">
+          <DateTimePicker
+            value={dayjs(currentValue)}
+            onChange={(newValue) => {
+              changeTimeValue(newValue?.format('YYYY-MM-DDTHH:mm'))
+            }}
+          />
+        </DemoItem>
+      </DemoContainer>
+    </div>
+  )
 }
