@@ -5,47 +5,24 @@ import Dialog from '@mui/material/Dialog'
 import dayjs from 'dayjs'
 
 import { Controller, useForm } from 'react-hook-form'
-import { generateId } from '../../config/generateId'
 import { ITask } from '../../config/user.data'
-import { useModalActions, useModalValue } from '../../provider/ModalProvider'
 import Button from '../Button/Button'
 import DateTimeRange from '../DateTimeRange/DateTimeRange'
 import Field from '../form/Field'
 import Select from '../Select'
 import styles from './CreateTaskModal.module.scss'
+import useCreateTask from './useCreateTask'
 
-type ITaskFormProps = Omit<ITask, 'createdAt' | 'updatedAt' | 'id' | 'status'>
+export type ITaskFormProps = Omit<ITask, 'createdAt' | 'updatedAt' | 'id' | 'status'>
 
 const CreateTaskModal: FC = () => {
   const { register, handleSubmit, formState: { errors }, control, reset } = useForm<ITaskFormProps>({
     mode: 'onChange'
   })
-  const { isOpen } = useModalValue()
-  const { setOpen } = useModalActions()
+
+  const { onSubmit, isOpen, handleClose } = useCreateTask({ reset })
 
   const priorityOptions = ['low', 'medium', 'high']
-
-  const handleClose = () => {
-    setOpen(false)
-  }
-
-  const onSubmit = (data: ITaskFormProps) => {
-    console.log(data.startDate)
-    console.log({
-      ...data,
-      status: 'process',
-      createdAt: JSON.stringify(new Date()),
-      updatedAt: JSON.stringify(new Date()),
-      id: generateId()
-    })
-    // reset({
-    //   title: '',
-    //   description: '',
-    //   priority: 'low',
-    //   startDate: dayjs().format('YYYY-MM-DDTHH:mm'),
-    //   endDate: dayjs().add(1, 'day').format('YYYY-MM-DDTHH:mm')
-    // })
-  }
 
   return (
     <Dialog
@@ -64,12 +41,12 @@ const CreateTaskModal: FC = () => {
           placeholder='Title'
           error={errors.title}
         />
-        <Field
+        <textarea
           {...register('description')}
           placeholder='Description'
-          className={styles.modalField}
-          error={errors.description}
-        />
+          className={styles.modalTextarea}
+          rows={10}
+        ></textarea>
         <Controller
           name='priority'
           control={control}
