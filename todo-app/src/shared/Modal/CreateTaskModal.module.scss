@@ -10,9 +10,33 @@
 		padding: 25px 35px;
 		border-radius: 30px;
 
+		.modalTextarea {
+			background-color: transparent;
+			display: block;
+			margin-bottom: 20px;
+			width: 100%;
+			font-size: 15px;
+			font-family: inherit;
+			background-color: transparent;
+			letter-spacing: 1x;
+			border: 2px solid #000;
+			border-radius: 5px;
+			resize: none;
+			padding: 6px;
+		}
+
 		.modalField {
+			display: block;
+			margin-bottom: 20px;
+			width: 100%;
+			background-color: transparent;
+
+
 			label {
+				width: 100%;
+
 				input {
+					border-radius: 5px;
 					font-size: 15px;
 					font-family: inherit;
 					background-color: transparent;
