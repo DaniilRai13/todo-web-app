@@ -1,7 +1,7 @@
 export interface ITask {
-	id: string
+	uid: string
 	title: string
-	status: 'process' | 'completed' | 'review'
+	status: 'process' | 'completed' | 'pending'
 	startDate: string
 	endDate: string
 	priority: 'low' | 'medium' | 'high'
