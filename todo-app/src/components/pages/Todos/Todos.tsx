@@ -1,9 +1,9 @@
 import { FC } from 'react'
 
-const Calendar: FC = () => {
+const Todos: FC = () => {
 	return (
 		<div>In development....</div>
 	)
 }
 
-export default Calendar
+export default Todos
