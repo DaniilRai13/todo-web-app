@@ -5,12 +5,13 @@ import './App.scss'
 import Layout from './components/layout/Layout'
 import Calendar from './components/pages/Calendar/Calendar'
 import Profile from './components/pages/Profile/Profile'
-import Home from './components/screens/Home'
+import Home from './components/pages/Home/Home'
 import { pageRoutes } from './config/pageRoutes'
 import { useActions } from './shared/hooks/useActions'
 import { useTypedSelector } from './shared/hooks/useTypedSelector'
 import Alert from './shared/notification/Alert'
 import { saveUserToStorage } from './store/user/user.localstorage'
+import Todos from './components/pages/Todos/Todos'
 
 function App() {
   const { user, isSuccess, error } = useTypedSelector(({ user }) => user)
@@ -36,7 +37,7 @@ function App() {
         >
           <Route index element={<Navigate to={'/overview'} />} />
           <Route path='overview' element={<Home />} />
-          <Route path='todo-list' element={<Home />} />
+          <Route path='todo-list' element={<Todos />} />
           <Route path='calendar' element={<Calendar />} />
           <Route path='profile' element={<Profile />} />
         </Route>
