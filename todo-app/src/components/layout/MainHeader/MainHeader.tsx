@@ -1,6 +1,6 @@
 import { FC } from 'react'
 import { NavLink } from 'react-router'
-import { useModalActions } from '../../../provider/ModalProvider'
+import { useModalActions } from '../../../provider/ModalProvider/modalContext'
 import Button from '../../../shared/Button/Button'
 import { useActions } from '../../../shared/hooks/useActions'
 import { useTypedSelector } from '../../../shared/hooks/useTypedSelector'
