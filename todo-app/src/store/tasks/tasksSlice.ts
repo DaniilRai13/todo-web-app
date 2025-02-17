@@ -1,6 +1,6 @@
 import { createSlice } from "@reduxjs/toolkit"
-import { createTask } from './tasks.actions'
 import { ITask } from '../../config/user.data'
+import { createTask, getTasks } from './tasks.actions'
 
 const initialState = {
   tasks: [] as ITask[],
@@ -23,11 +23,25 @@ export const tasksSlice = createSlice({
         state.isSuccess = true
         state.isLoading = false
       })
-      .addCase(createTask.rejected, (state, {error}) => {
+      .addCase(createTask.rejected, (state, { error }) => {
         state.isSuccess = false
         state.isLoading = false
         state.error = error.message
       })
+      .addCase(getTasks.pending, (state) => {
+        state.isLoading = false
+      })
+      .addCase(getTasks.fulfilled, (state, { payload }) => {
+        state.isSuccess = true
+        state.isLoading = false
+        state.tasks = payload
+      })
+      .addCase(getTasks.rejected, (state, { error }) => {
+        state.isSuccess = false
+        state.isLoading = false
+        state.error = error.message
+      })
+
   }
 })
 // export const { } = tasksSlice.actions
