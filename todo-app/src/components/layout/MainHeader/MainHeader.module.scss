@@ -1,4 +1,4 @@
-@import "../../../assets/var.scss";
+@use "../../../assets/var.scss" as *;
 
 .header {
 	display: flex;

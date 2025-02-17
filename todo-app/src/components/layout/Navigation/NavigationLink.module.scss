@@ -1,4 +1,4 @@
-@import "../../../assets/var.scss";
+@use "../../../assets/var.scss" as *;
 
 .nav__link {
 	a {
@@ -42,7 +42,7 @@
 			min-width: 27px;
 		}
 
-		> div {
+		>div {
 			margin-left: 10px;
 		}
 	}

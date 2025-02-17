@@ -1,4 +1,4 @@
-@import "../../assets/var.scss";
+@use "../../assets/var.scss" as *;
 
 .button {
 	display: flex;
@@ -12,12 +12,15 @@
 	font-size: 1.1rem;
 	cursor: pointer;
 	transition: background-color 0.1s ease-in-out;
-	svg{
+
+	svg {
 		margin-right: 10px;
 	}
-	h3{
+
+	h3 {
 		font-size: 18px;
 	}
+
 	&:disabled {
 		cursor: default;
 	}

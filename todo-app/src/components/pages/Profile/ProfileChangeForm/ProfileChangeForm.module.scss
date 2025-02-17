@@ -1,11 +1,14 @@
-@import "../../../../assets/var.scss";
+@use "../../../../assets/var.scss" as *;
+
 .changeProfile {
   .title {
     font-size: 24px;
   }
+
   .form {
     display: flex;
     gap: 30px;
+
     .mainInfo {
       label {
         position: relative;
@@ -20,6 +23,7 @@
 
         width: 100%;
         max-width: 330px;
+
         &::after {
           position: absolute;
           content: "";
@@ -33,6 +37,7 @@
           border-bottom-left-radius: 50px;
           z-index: -1;
         }
+
         span {
           text-transform: capitalize;
           font-size: 14px;
@@ -41,6 +46,7 @@
           margin-left: 3px;
           color: #050505bf;
         }
+
         input {
           margin-top: 0;
           border: none;

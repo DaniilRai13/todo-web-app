@@ -1,4 +1,4 @@
-@import "../../assets/var.scss";
+@use "../../assets/var.scss" as *;
 $bar-width: 15%;
 $aside-margin: 30px;
 
@@ -14,6 +14,7 @@ $aside-margin: 30px;
 		display: flex;
 		width: 100%;
 		height: 100%;
+
 		aside {
 			position: fixed;
 			display: flex;
@@ -50,6 +51,7 @@ $aside-margin: 30px;
 			padding-left: 30px;
 			width: 100%;
 			height: 100%;
+
 			section,
 			header {
 				border-radius: 20px;
