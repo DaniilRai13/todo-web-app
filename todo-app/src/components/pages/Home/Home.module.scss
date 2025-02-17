@@ -1,0 +1,10 @@
+.home {
+	.tasksInfoInner {
+		.tasksInfo {
+			display: flex;
+			flex-wrap: wrap;
+			gap: 20px;
+			min-width: 50%;
+		}
+	}
+}
