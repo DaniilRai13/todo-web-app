@@ -1,7 +1,7 @@
 import dayjs from 'dayjs'
 import { SubmitHandler, UseFormReset } from 'react-hook-form'
 import { generateId } from '../../config/generateId'
-import { useModalActions, useModalValue } from '../../provider/ModalProvider'
+import { useModalActions, useModalValue } from '../../provider/ModalProvider/modalContext'
 import { useActions } from '../hooks/useActions'
 import { useTypedSelector } from '../hooks/useTypedSelector'
 import { ITaskFormProps } from './CreateTaskModal'
