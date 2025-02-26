@@ -21,9 +21,10 @@ const NavigationLink: FC<INavigateSideProps & { isOpen: boolean }> = ({ link, co
 				<AnimatePresence>
 					{isOpen && <motion.div
 						initial={{ opacity: 0, width: 0 }}
-						animate={{ opacity: 1, width: 'auto' }}
+						animate={{ opacity: 1, width: "100%" }}
 						exit={{ opacity: 0, width: 0 }}
 						transition={{ duration: 0.2 }}
+						style={{ overflow: 'hidden' }}
 					>{name}</motion.div>}
 				</AnimatePresence>
 			</NavLink >
