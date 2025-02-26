@@ -4,7 +4,6 @@ import { navigateSideProps } from '../../../config/pageRoutes'
 import { Icon } from '../../../shared/LucidIcon'
 import styles from '../Layout.module.scss'
 import NavigationLink from './NavigationLink'
-import useAnimation from "../useAnimation"
 
 interface NavigationProps {
 	isOpen: boolean
@@ -12,41 +11,46 @@ interface NavigationProps {
 }
 
 const Navigation: FC<NavigationProps> = ({ isOpen, setIsOpen }) => {
-	const { getAsideWidth } = useAnimation({ isOpen })
 	return (
-		<motion.aside
-			animate={{ width: getAsideWidth(), padding: isOpen ? '50px 0 30px 20px' : '50px 0 30px' }}
-			transition={{ type: "spring" }}
-		>
-			{isOpen
-				? <motion.div
-					className={styles.sideOpened}
-					whileHover={{ scale: 1.1 }}
-					whileTap={{ scale: 0.9 }}
-				> <Icon
-						icon='PanelRightOpen'
-						color='#EC4899'
-						size={24}
-						onClick={() => setIsOpen(false)}
-					/></motion.div>
-				: <motion.div
-					className={styles.sideClosed}
-					whileHover={{ scale: 1.1 }}
-					whileTap={{ scale: 0.9 }}
-				><Icon
-						icon='PanelRightClose'
-						size={24}
-						onClick={() => setIsOpen(true)}
-					/></motion.div>}
-			{navigateSideProps.map(item => (<NavigationLink
-				key={item.link}
-				link={item.link}
-				color={item.color}
-				name={item.name}
-				icon={item.icon}
-				isOpen={isOpen}
-			/>))}
-		</motion.aside>
+		<aside>
+			<motion.div
+				animate={{ width: isOpen ? '200px' : '60px', padding: isOpen ? '50px 0 30px 20px' : '50px 0 30px' }}
+				transition={{ type: "spring" }}
+				className={styles.asideInner}>
+				{isOpen
+					? <motion.div
+						className={styles.sideOpened}
+						whileHover={{ scale: 1.1 }}
+						whileTap={{ scale: 0.9 }}
+					>
+						<Icon
+							icon='PanelRightOpen'
+							color='#EC4899'
+							size={24}
+							onClick={() => setIsOpen(false)}
+						/>
+					</motion.div>
+					: <motion.div
+						className={styles.sideClosed}
+						whileHover={{ scale: 1.1 }}
+						whileTap={{ scale: 0.9 }}
+					>
+						<Icon
+							icon='PanelRightClose'
+							size={24}
+							onClick={() => setIsOpen(true)}
+						/>
+					</motion.div>}
+				{navigateSideProps.map(item => (<NavigationLink
+					key={item.link}
+					link={item.link}
+					color={item.color}
+					name={item.name}
+					icon={item.icon}
+					isOpen={isOpen}
+				/>))}
+			</motion.div>
+		</aside >
 	)
 }
 
