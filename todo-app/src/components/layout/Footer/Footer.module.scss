@@ -1,0 +1,121 @@
+@use "../../../assets/var.scss" as *;
+
+footer {
+	padding: 30px 0;
+	border-top: 2px solid #000;
+
+	.footerInner {
+		.mainContent {
+			display: flex;
+			justify-content: space-around;
+
+			.rightSide {
+				>ul {
+					list-style: none;
+					margin-bottom: 10px;
+
+					li {
+						a {
+							position: relative;
+							text-decoration: none;
+							color: #000;
+							font-size: 20px;
+
+							@media (hover:hover) {
+								&:hover {
+									&::after {
+										width: 100%;
+									}
+								}
+							}
+
+							&::after {
+								content: '';
+								position: absolute;
+								bottom: -3px;
+								left: 0;
+								height: 2px;
+								width: 0;
+								background-color: #df7979;
+								transition: .1s width ease-in-out;
+							}
+						}
+					}
+				}
+
+				.socials {
+					>ul {
+						list-style: none;
+						display: flex;
+						align-items: center;
+						gap: 7px;
+
+						li {
+							a {
+								text-decoration: none;
+
+								svg {
+									transform: scale(1);
+									transition: .1s transform ease-in;
+
+									@media (hover:hover) {
+										&:hover {
+											transform: scale(1.1);
+										}
+									}
+								}
+							}
+						}
+					}
+				}
+			}
+
+			.leftSide {
+				display: flex;
+				flex-direction: column;
+
+				img {
+					width: 150px;
+					height: auto;
+				}
+
+				.description {
+					display: inline-block;
+					font-size: 14px;
+					margin-left: 5px;
+					white-space: nowrap;
+					overflow: hidden;
+					width: 100%;
+					color: rgba(0, 0, 0, 0.431);
+					-webkit-animation: type 5s steps(50, end);
+					animation: type 4s infinite 2s;
+				}
+
+			}
+
+
+		}
+
+		hr {
+			width: 30%;
+			margin: 25px auto;
+		}
+
+		.madeBy {
+			display: block;
+			text-align: center;
+		}
+	}
+}
+
+@keyframes type {
+	from {
+		width: 0;
+	}
+}
+
+@-webkit-keyframes type {
+	from {
+		width: 0;
+	}
+}
