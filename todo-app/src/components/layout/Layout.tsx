@@ -1,39 +1,26 @@
-import { FC, useEffect, useState } from 'react'
-import Navigation from './Navigation/Navigation'
+import { motion } from 'framer-motion'
+import { FC, useState } from 'react'
 import { Outlet } from 'react-router'
+import Footer from './Footer/Footer'
 import styles from './Layout.module.scss'
 import MainHeader from './MainHeader/MainHeader'
-import { motion } from 'framer-motion'
-import useAnimation from './useAnimation'
+import Navigation from './Navigation/Navigation'
 
 const Layout: FC = () => {
 	const [isOpen, setIsOpen] = useState(true)
-	const { setWindowWidth, getAsideWidth } = useAnimation({ isOpen })
-
-	useEffect(() => {
-		const handleResize = () => {
-			setWindowWidth(window.innerWidth)
-		}
-		window.addEventListener('resize', handleResize)
-
-		return () => {
-			window.removeEventListener('resize', handleResize)
-		}
-	}, [])
 
 	return (
 		<div className={styles.container}>
+			<MainHeader />
 			<div className={styles.layout}>
 				<Navigation isOpen={isOpen} setIsOpen={setIsOpen} />
 				<motion.main
 					className={styles.main}
-					initial={{ marginLeft: getAsideWidth() }}
-					animate={{ marginLeft: getAsideWidth() }}
 				>
-					<MainHeader />
 					<Outlet />
 				</motion.main>
 			</div>
+			<Footer />
 		</div>
 	)
 }
