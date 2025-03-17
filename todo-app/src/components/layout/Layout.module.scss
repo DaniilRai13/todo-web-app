@@ -13,7 +13,8 @@ $aside-margin: 30px;
 		display: flex;
 		gap: 1.5rem;
 		width: 100%;
-		height: calc(100vh - $headerHeight);
+		min-height: 100vh;
+		padding-bottom: 30px;
 
 		aside {
 			box-sizing: border-box;
