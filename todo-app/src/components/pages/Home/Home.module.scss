@@ -2,9 +2,9 @@
 	.tasksInfoInner {
 		.tasksInfo {
 			display: flex;
+			justify-content: space-between;
 			flex-wrap: wrap;
-			gap: 20px;
-			min-width: 50%;
+			row-gap: 15px;
 		}
 	}
 }
