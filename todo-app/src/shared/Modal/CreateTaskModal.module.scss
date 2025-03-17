@@ -1,8 +1,12 @@
 .modal {
-	>div {
-		>div {
+	> div {
+		> div {
 			border-radius: 15px;
 			background-color: rgb(250, 231, 218);
+			&::-webkit-scrollbar {
+				scrollbar-width: thin;
+				scrollbar-color: #000 transparent;
+			}
 		}
 	}
 
@@ -31,7 +35,6 @@
 			width: 100%;
 			background-color: transparent;
 
-
 			label {
 				width: 100%;
 
@@ -53,7 +56,7 @@
 				font-weight: 600;
 			}
 
-			>div {
+			> div {
 				font-family: inherit;
 				font-weight: 600;
 			}
@@ -68,18 +71,18 @@
 		.dataPicker {
 			margin-top: 10px;
 
-			>div {
+			> div {
 				margin: 0;
 				padding: 0;
 
-				>div {
+				> div {
 					p {
 						font-family: inherit;
 						font-weight: 600;
 					}
 
-					>div {
-						>div {
+					> div {
+						> div {
 							input {
 								font-family: inherit;
 								font-weight: 600;
@@ -104,11 +107,11 @@
 
 			button {
 				font-size: 16px;
-				color: #FFFFFF;
+				color: #ffffff;
 				background-color: #575a58;
 				margin-left: 0;
 
-				@media(hover:hover) {
+				@media (hover: hover) {
 					&:hover {
 						background-color: rgb(98, 96, 231);
 					}
