@@ -4,6 +4,7 @@ import { createTask, getTasks } from './tasks.actions'
 
 const initialState = {
   tasks: [] as ITask[],
+  upcomingTasks: [] as ITask[],
   isLoading: false,
   isSuccess: false,
   error: null as string | undefined | null,
@@ -12,7 +13,11 @@ const initialState = {
 export const tasksSlice = createSlice({
   name: 'user',
   initialState,
-  reducers: {},
+  reducers: {
+    filterTasksByDate: (state, { payload }: { payload: ITask[] }) => {
+      state.upcomingTasks = payload.sort((a, b) => new Date(a.endDate).getTime() - new Date(b.endDate).getTime()).slice(0, 6)
+    }
+  },
   extraReducers(builder) {
     builder
       .addCase(createTask.pending, (state) => {
@@ -44,5 +49,5 @@ export const tasksSlice = createSlice({
 
   }
 })
-// export const { } = tasksSlice.actions
+export const { filterTasksByDate } = tasksSlice.actions
 export default tasksSlice.reducer
