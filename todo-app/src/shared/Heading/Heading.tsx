@@ -3,12 +3,12 @@ import { FC, ReactNode } from 'react';
 import styles from './Heading.module.scss';
 
 interface IHeading {
-	children?: ReactNode;
+	title?: ReactNode;
 	className?: string;
 }
 
-const Heading: FC<IHeading> = ({ children, className }) => {
-	return <h3 className={cn(styles.heading, className)}>{children}</h3>;
+const Heading: FC<IHeading> = ({ title, className }) => {
+	return <h3 className={cn(styles.heading, className)}>{title}</h3>;
 };
 
 export default Heading;

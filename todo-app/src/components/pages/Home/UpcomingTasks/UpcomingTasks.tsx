@@ -15,7 +15,7 @@ const UpcomingTasks: FC = () => {
 	console.log(isLoading);
 	return (
 		<section className={styles.upcomingTasks}>
-			<Heading className={styles.title}>upcoming tasks</Heading>
+			<Heading title='upcoming tasks' className={styles.title} />
 			<div className={styles.tasksWrapper}>
 				{isLoading ? (
 					<SkeletonLoader
