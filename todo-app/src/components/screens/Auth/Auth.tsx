@@ -1,7 +1,7 @@
 import cn from 'classnames';
 import { AnimatePresence } from 'framer-motion';
 import { FC, useEffect } from 'react';
-import { Route, Routes, useLocation, useNavigate } from 'react-router';
+import { useLocation, useNavigate } from 'react-router';
 import { pageRoutes } from '../../../config/pageRoutes';
 import { useActions } from '../../../shared/hooks/useActions';
 import { useTypedSelector } from '../../../shared/hooks/useTypedSelector';
@@ -13,7 +13,7 @@ const Auth: FC = () => {
 	const { pathname } = useLocation();
 	const { resetStatus } = useActions();
 	const isRegisterPage = pathname === pageRoutes.register;
-	
+
 	const { error, isSuccess } = useTypedSelector(({ user }) => user);
 	const navigate = useNavigate();
 
