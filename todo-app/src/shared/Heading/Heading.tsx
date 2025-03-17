@@ -1,16 +1,14 @@
-import { FC } from "react"
-import styles from './Heading.module.scss'
-import cn from 'classnames'
+import cn from 'classnames';
+import { FC, ReactNode } from 'react';
+import styles from './Heading.module.scss';
 
 interface IHeading {
-  title: string
-  className?: string
+	children?: ReactNode;
+	className?: string;
 }
 
-const Heading: FC<IHeading> = ({ title, className }) => {
-  return (
-    <h3 className={cn(styles.heading, className)}>{title}</h3>
-  )
-}
+const Heading: FC<IHeading> = ({ children, className }) => {
+	return <h3 className={cn(styles.heading, className)}>{children}</h3>;
+};
 
-export default Heading
+export default Heading;
