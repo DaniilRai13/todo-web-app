@@ -1,6 +1,7 @@
 import { createAsyncThunk } from "@reduxjs/toolkit"
 import { ITask } from "../../config/user.data"
 import { tasksService } from "../../services/tasksService/tasks.service"
+import { filterTasksByDate } from './tasksSlice'
 
 interface ITaskProps {
   task: ITask,
@@ -21,9 +22,10 @@ export const createTask = createAsyncThunk(
 )
 export const getTasks = createAsyncThunk<ITask[], string, { rejectValue: string }>(
   'tasks/get',
-  async (userId: string, { rejectWithValue }) => {
+  async (userId: string, { rejectWithValue, dispatch }) => {
     try {
       const response = await tasksService.get(userId)
+      dispatch(filterTasksByDate(response))
       return response
     } catch (error: unknown) {
       const errorEdit = error instanceof Error ? error.message : 'An error occurred'
