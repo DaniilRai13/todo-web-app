@@ -1,45 +1,55 @@
-import { icons } from 'lucide-react'
+import { icons } from 'lucide-react';
 
 interface IPageRoutes {
-	home: string
-	auth: string
+	home: string;
+	auth: string;
+	register: string;
+	overview: string;
+	todo_list: string;
+	calendar: string;
+	profile: string;
 }
 
 export const pageRoutes: IPageRoutes = {
 	home: '/',
-	auth: 'auth'
-}
+	auth: '/auth',
+	register: '/register',
+	overview: '/overview',
+	todo_list: '/todo-list',
+	calendar: '/calendar',
+	profile: '/profile',
+};
 
 export interface INavigateSideProps {
-	name: string,
-	icon: IconNames,
-	color: string
-	link: string
+	name: string;
+	icon: IconNames;
+	color: string;
+	link: string;
 }
-export type IconNames = keyof typeof icons
+export type IconNames = keyof typeof icons;
 export const navigateSideProps: INavigateSideProps[] = [
 	{
 		name: 'Overview',
 		icon: 'LayoutGrid',
 		color: '#59b081',
-		link: '/overview'
+		link: '/overview',
 	},
 	{
 		name: 'Todos',
 		icon: 'NotebookPen',
 		color: '#c84848',
-		link: '/todo-list'
+		link: '/todo-list',
 	},
 	{
 		name: 'Calendar',
 		icon: 'CalendarDays',
 		color: '#b46cd1',
-		link: '/calendar'
+		link: '/calendar',
 	},
 	{
 		name: 'Profile',
 		icon: 'UserRoundPen',
 		color: '#F59E0B',
-		link: '/profile'
+		link: '/profile',
 	},
-]
+];
