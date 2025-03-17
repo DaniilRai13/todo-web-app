@@ -1,7 +1,7 @@
 import { CSSProperties, FC } from 'react';
 import { INavigateSideProps } from '../../../../../config/pageRoutes';
 import { Icon } from '../../../../../shared/LucidIcon';
-import styles from './TasksStatistic.module.scss';
+import styles from './TaskStatistic.module.scss';
 
 interface ITasksStatProps {
 	title: string;
@@ -9,7 +9,7 @@ interface ITasksStatProps {
 	count: number;
 	style?: CSSProperties | undefined;
 }
-const TasksStatistic: FC<ITasksStatProps> = ({
+const TaskStatistic: FC<ITasksStatProps> = ({
 	title,
 	iconName,
 	count,
@@ -30,4 +30,4 @@ const TasksStatistic: FC<ITasksStatProps> = ({
 	);
 };
 
-export default TasksStatistic;
+export default TaskStatistic;

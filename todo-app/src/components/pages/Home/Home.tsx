@@ -3,7 +3,7 @@ import { useActions } from '../../../shared/hooks/useActions';
 import { useTypedSelector } from '../../../shared/hooks/useTypedSelector';
 import styles from './Home.module.scss';
 
-import TaskStatistics from './TasksStatistics/TaskStatistics';
+import TasksStatistics from './TasksStatistics/TasksStatistic';
 import UpcomingTasks from './UpcomingTasks/UpcomingTasks';
 const Home: FC = () => {
 	const { user } = useTypedSelector(({ user }) => user);
@@ -19,7 +19,7 @@ const Home: FC = () => {
 	return (
 		<div className={styles.home}>
 			<div className={styles.tasksInfoInner}>
-				<TaskStatistics />
+				<TasksStatistics />
 			</div>
 			<UpcomingTasks />
 		</div>
