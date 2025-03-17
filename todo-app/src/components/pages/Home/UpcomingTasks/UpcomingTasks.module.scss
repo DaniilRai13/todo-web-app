@@ -1,0 +1,24 @@
+.upcomingTasks {
+	border: none !important;
+	padding: 0 !important;
+	margin-top: 40px;
+
+	.tasksWrapper {
+		.tasks {
+			display: flex;
+			flex-wrap: wrap;
+			justify-content: space-between;
+			row-gap: 20px;
+		}
+	}
+
+	.upcomingBtn {
+		display: flex;
+		justify-content: center;
+		width: 200px;
+		margin: 0 auto;
+		margin-top: 20px;
+		background-color: rgba(0, 0, 0, 0.886);
+		border-radius: 0;
+	}
+}
