@@ -1,31 +1,29 @@
-import { FC, ReactNode, useEffect } from 'react'
-import { useTypedSelector } from '../shared/hooks/useTypedSelector'
-import { AuthService } from '../services/authService/auth.service'
-import { useLocation, useNavigate } from 'react-router'
+import { FC, ReactNode, useEffect } from 'react';
+import { useLocation, useNavigate } from 'react-router';
+import { pageRoutes } from '../config/pageRoutes';
+import { AuthService } from '../services/authService/auth.service';
+import { useTypedSelector } from '../shared/hooks/useTypedSelector';
 
 const AuthProvider: FC<{ children: ReactNode }> = ({ children }) => {
-  const { user } = useTypedSelector(({ user }) => user)
-  const tokens = AuthService.checkTokens()
+	const { user } = useTypedSelector(({ user }) => user);
+	const tokens = AuthService.checkTokens();
 
-  const navigate = useNavigate()
-  const location = useLocation();
+	const navigate = useNavigate();
+	const location = useLocation();
+	useEffect(() => {
+		const publicRoutes = [pageRoutes.auth, pageRoutes.register];
+		if (!tokens || !user) {
+			if (!publicRoutes.includes(location.pathname)) {
+				navigate(pageRoutes.auth, { replace: true });
+			}
+		} else {
+			if (location.pathname === pageRoutes.auth) {
+				navigate(pageRoutes.overview, { replace: true });
+			}
+		}
+	}, [user, tokens, location.pathname, navigate]);
 
-  useEffect(() => {
-    if ((!tokens || !user) && location.pathname !== '/auth') {
-      navigate('/auth');
-    }
-    else if (tokens && user) {
-      if (location.pathname !== '/auth') {
-        navigate(location.pathname);
-      } else {
-        navigate('/');
-      }
-    }
-  }, [user, tokens]);
+	return <>{children}</>;
+};
 
-  return (
-    <>{children}</>
-  )
-}
-
-export default AuthProvider
+export default AuthProvider;
