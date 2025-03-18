@@ -1,6 +1,6 @@
 import { FC } from 'react'
-import LOGO from '../../../assets/TASK.gif'
-import { Icon } from '../../../shared/LucidIcon'
+import LOGO from '@assets/TASK.gif'
+import { Icon } from '@shared/LucidIcon'
 import styles from './Footer.module.scss'
 
 const Footer: FC = () => {

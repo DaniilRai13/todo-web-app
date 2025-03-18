@@ -2,12 +2,12 @@ import cn from 'classnames';
 import { FC } from 'react';
 import { SubmitHandler, useForm } from 'react-hook-form';
 import { NavLink } from 'react-router';
-import { pageRoutes } from '../../../../config/pageRoutes';
-import { IAuthData } from '../../../../interfaces/Auth.interface';
-import Button from '../../../../shared/Button/Button';
-import Field from '../../../../shared/form/Field';
-import { useActions } from '../../../../shared/hooks/useActions';
-import { useTypedSelector } from '../../../../shared/hooks/useTypedSelector';
+import { pageRoutes } from '@config/pageRoutes';
+import { IAuthData } from '@interfaces/Auth.interface';
+import Button from '@shared/Button/Button';
+import Field from '@shared/form/Field';
+import { useActions } from '@hooks/useActions';
+import { useTypedSelector } from '@hooks/useTypedSelector';
 import styles from './AuthForm.module.scss';
 
 const AuthForm: FC<{ mode: string }> = ({ mode }) => {

@@ -5,7 +5,7 @@ import Dialog from '@mui/material/Dialog';
 import dayjs from 'dayjs';
 
 import { Controller, useForm } from 'react-hook-form';
-import { ITask } from '../../config/user.data';
+import { ITask } from '@config/user.data';
 import Button from '../Button/Button';
 import DateTimeRange from '../DateTimeRange/DateTimeRange';
 import Field from '../form/Field';

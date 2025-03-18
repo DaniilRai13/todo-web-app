@@ -2,7 +2,7 @@ import { ButtonHTMLAttributes, FC, ReactNode } from 'react'
 import styles from './Button.module.scss'
 import cn from 'classnames'
 import { Icon } from '../LucidIcon'
-import { IconNames } from '../../config/pageRoutes'
+import { IconNames } from '@config/pageRoutes'
 
 interface IButton extends ButtonHTMLAttributes<HTMLButtonElement> {
 	title: string

@@ -8,8 +8,8 @@ import Home from './components/pages/Home/Home';
 import Profile from './components/pages/Profile/Profile';
 import Todos from './components/pages/Todos/Todos';
 import { pageRoutes } from './config/pageRoutes';
-import { useActions } from './shared/hooks/useActions';
-import { useTypedSelector } from './shared/hooks/useTypedSelector';
+import { useActions } from '@hooks/useActions';
+import { useTypedSelector } from '@hooks/useTypedSelector';
 import Alert from './shared/notification/Alert';
 import { saveUserToStorage } from './store/user/user.localstorage';
 

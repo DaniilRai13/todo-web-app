@@ -2,7 +2,7 @@ import { FC, ReactNode, useEffect } from 'react';
 import { useLocation, useNavigate } from 'react-router';
 import { pageRoutes } from '../config/pageRoutes';
 import { AuthService } from '../services/authService/auth.service';
-import { useTypedSelector } from '../shared/hooks/useTypedSelector';
+import { useTypedSelector } from '@hooks/useTypedSelector';
 
 const AuthProvider: FC<{ children: ReactNode }> = ({ children }) => {
 	const { user } = useTypedSelector(({ user }) => user);

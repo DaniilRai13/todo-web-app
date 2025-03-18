@@ -1,11 +1,11 @@
 import { FC } from 'react'
 import { NavLink } from 'react-router'
-import { useModalActions } from '../../../provider/ModalProvider/modalContext'
-import Button from '../../../shared/Button/Button'
-import { useActions } from '../../../shared/hooks/useActions'
-import { useTypedSelector } from '../../../shared/hooks/useTypedSelector'
-import { Icon } from '../../../shared/LucidIcon'
-import CreateTaskModal from '../../../shared/Modal/CreateTaskModal'
+import { useModalActions } from '@provider/ModalProvider/modalContext'
+import Button from '@shared/Button/Button'
+import { useActions } from '@hooks/useActions'
+import { useTypedSelector } from '@hooks/useTypedSelector'
+import { Icon } from '@shared/LucidIcon'
+import CreateTaskModal from '@shared/Modal/CreateTaskModal'
 import styles from './MainHeader.module.scss'
 
 const MainHeader: FC = () => {

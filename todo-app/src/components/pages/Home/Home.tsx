@@ -1,6 +1,6 @@
+import { useActions } from '@hooks/useActions';
+import { useTypedSelector } from '@hooks/useTypedSelector';
 import { FC, useEffect } from 'react';
-import { useActions } from '../../../shared/hooks/useActions';
-import { useTypedSelector } from '../../../shared/hooks/useTypedSelector';
 import styles from './Home.module.scss';
 
 import TasksStatistics from './TasksStatistics/TasksStatistic';

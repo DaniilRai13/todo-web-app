@@ -1,7 +1,7 @@
 import { SubmitHandler } from "react-hook-form"
-import { IProfileData } from "../../../config/user.data"
-import { useTypedSelector } from "../../../shared/hooks/useTypedSelector"
-import { useActions } from '../../../shared/hooks/useActions'
+import { IProfileData } from "@config/user.data"
+import { useTypedSelector } from "@hooks/useTypedSelector"
+import { useActions } from '@hooks/useActions'
 
 export const useProfile = () => {
   const { user, error, isSuccess, isLoading } = useTypedSelector(({ user }) => user)

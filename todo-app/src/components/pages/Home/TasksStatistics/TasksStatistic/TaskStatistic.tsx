@@ -1,6 +1,6 @@
 import { CSSProperties, FC } from 'react';
-import { INavigateSideProps } from '../../../../../config/pageRoutes';
-import { Icon } from '../../../../../shared/LucidIcon';
+import { INavigateSideProps } from '@config/pageRoutes';
+import { Icon } from '@shared/LucidIcon';
 import styles from './TaskStatistic.module.scss';
 
 interface ITasksStatProps {

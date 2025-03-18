@@ -1,10 +1,10 @@
 import { FC, useState } from "react";
-import Button from "../../../../shared/Button/Button";
-import Field from "../../../../shared/form/Field";
+import Button from "@shared/Button/Button";
+import Field from "@shared/form/Field";
 import { useForm } from "react-hook-form";
 import styles from './PasswordChangeForm.module.scss'
-import Heading from "../../../../shared/Heading/Heading";
-import { useActions } from "../../../../shared/hooks/useActions";
+import Heading from "@shared/Heading/Heading";
+import { useActions } from "@hooks/useActions";
 import { useProfile } from "../useProfile";
 
 interface IPasswordForm {

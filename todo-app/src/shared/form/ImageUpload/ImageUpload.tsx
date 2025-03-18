@@ -1,6 +1,6 @@
 import { useState, useEffect, FC, ChangeEvent, useRef } from 'react';
 import styles from './ImageUpload.module.scss'
-import resizeAndConvertImage from '../../../common/resizeImg';
+import resizeAndConvertImage from '@common/resizeImg';
 
 interface ImageUploadProps {
   currentImageUrl: string | null;
