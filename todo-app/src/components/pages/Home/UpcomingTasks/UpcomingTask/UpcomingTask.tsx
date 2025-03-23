@@ -1,28 +1,28 @@
-import { FC, useState } from 'react';
-import { ITask } from '../../../../../config/user.data';
-import Select from '../../../../../shared/Select';
+import { ITask } from '@config/user.data';
+import dayjs from 'dayjs';
+import { FC } from 'react';
 import styles from './UpcomingTask.module.scss';
+
 const UpcomingTask: FC<{ task: ITask }> = ({ task }) => {
-	const [priority, setPriority] = useState<ITask['priority']>(task.priority);
-	const priorities: ITask['priority'][] = ['low', 'medium', 'high'] as const;
-	const changePriority = (option: ITask['priority']) => {
-		setPriority(option);
-	};
+	const formattedDate = dayjs(task.endDate).format('DD.MM.YYYY, h:mm A');
+
 	return (
 		<div className={styles.task}>
-			<div>{task.title}</div>
+			<div className={styles.status}>{task.status}</div>
+
 			<div className={styles.taskItems}>
-				<div className={styles.info}>
-					<Select
-						title='status'
-						options={priorities}
-						value={priority}
-						changeOptionValue={changePriority}
-					/>
+				<div className={styles.title}>{task.title}</div>
+				<div className={styles.priority}>
+					<div className={styles.priorityText} data-priority={task.priority}>
+						{task.priority}
+					</div>
 				</div>
 				<div className={styles.description}>{task.description}</div>
 			</div>
-			<div className={styles.date}></div>
+			<div className={styles.date}>
+				<h4 className={styles.dateTitle}>Ending:</h4>
+				<div className={styles.dateInfo}>{formattedDate}</div>
+			</div>
 		</div>
 	);
 };
