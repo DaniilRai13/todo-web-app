@@ -1,4 +1,4 @@
-import Heading from '../../../shared/Heading/Heading'
+import Heading from '@shared/Heading/Heading'
 import PasswordChangeForm from './PasswordChangeForm/PasswordChangeForm'
 import styles from './Profile.module.scss'
 import ProfileChangeForm from './ProfileChangeForm/ProfileChangeForm'

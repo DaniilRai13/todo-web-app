@@ -4,8 +4,8 @@ import { DialogActions } from '@mui/material';
 import Dialog from '@mui/material/Dialog';
 import dayjs from 'dayjs';
 
-import { Controller, useForm } from 'react-hook-form';
 import { ITask } from '@config/user.data';
+import { Controller, useForm } from 'react-hook-form';
 import Button from '../Button/Button';
 import DateTimeRange from '../DateTimeRange/DateTimeRange';
 import Field from '../form/Field';
@@ -39,6 +39,10 @@ const CreateTaskModal: FC = () => {
 				<Field
 					{...register('title', {
 						required: 'This field is required!',
+						maxLength: {
+							value: 35,
+							message: 'Title must be less than 35 characters',
+						},
 					})}
 					className={styles.modalField}
 					placeholder='Title'
