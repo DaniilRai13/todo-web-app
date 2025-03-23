@@ -1,4 +1,4 @@
-@use "../../../assets/var.scss" as *;
+@use '../../../assets/var.scss' as *;
 
 .nav__link {
 	a {
@@ -13,7 +13,7 @@
 
 		&::after {
 			position: absolute;
-			content: "";
+			content: '';
 			top: 0;
 			right: 0;
 			height: 100%;
@@ -23,7 +23,9 @@
 			background-color: #518cf3;
 			transition: 0.1s linear;
 		}
-
+		@media (max-width: 800px) {
+			font-size: 1.1rem;
+		}
 		&.active {
 			&::after {
 				width: 4px;
@@ -40,9 +42,12 @@
 
 		svg {
 			min-width: 27px;
+			@media (max-width: 800px) {
+				min-width: 24px;
+			}
 		}
 
-		>div {
+		> div {
 			margin-left: 10px;
 		}
 	}

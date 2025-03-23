@@ -2,13 +2,20 @@
 	border: none !important;
 	padding: 0 !important;
 	margin-top: 40px;
-
+	@media (max-width: 600px) {
+		margin-top: 20px;
+	}
 	.tasksWrapper {
 		.tasks {
 			display: flex;
 			flex-wrap: wrap;
-			justify-content: space-between;
-			row-gap: 20px;
+			gap: 30px;
+			@media (max-width: 800px) {
+				gap: 15px;
+			}
+			@media (max-width: 710px) {
+				justify-content: center;
+			}
 		}
 		.upcomingSkeletons {
 			display: flex;

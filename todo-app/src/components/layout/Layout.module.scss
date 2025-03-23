@@ -1,4 +1,4 @@
-@use "../../assets/var.scss" as *;
+@use '../../assets/var.scss' as *;
 $bar-width: 15%;
 $aside-margin: 30px;
 
@@ -7,7 +7,9 @@ $aside-margin: 30px;
 	padding: 20px 40px 20px;
 	max-width: 1440px;
 	box-sizing: border-box;
-
+	@media (max-width: 900px) {
+		padding: 20px 20px 20px;
+	}
 	.layout {
 		position: relative;
 		display: flex;
@@ -33,7 +35,10 @@ $aside-margin: 30px;
 				padding: 50px 0 30px 20px;
 				border-radius: $border-radius;
 				border: 3px solid #000;
-
+				@media (max-width: 800px) {
+					padding-top: 40px;
+					padding-left: 15px;
+				}
 				.sideOpened,
 				.sideClosed {
 					position: absolute;
@@ -50,7 +55,6 @@ $aside-margin: 30px;
 					transform: translateX(-50%) !important;
 				}
 			}
-
 		}
 
 		.main {
