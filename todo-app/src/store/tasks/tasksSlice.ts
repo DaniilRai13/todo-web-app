@@ -1,4 +1,5 @@
 import { createSlice } from '@reduxjs/toolkit';
+import dayjs from 'dayjs';
 import { ITask } from '../../config/user.data';
 import { createTask, getTasks } from './tasks.actions';
 
@@ -16,6 +17,15 @@ export const tasksSlice = createSlice({
 	reducers: {
 		filterTasksByDate: (state, { payload }: { payload: ITask[] }) => {
 			state.upcomingTasks = payload
+				.filter(item => {
+					const currentDate = dayjs().format('YYYY-MM-DDTHH:mm');
+					const endDate = dayjs(item.endDate);
+					if (
+						!endDate.isBefore(currentDate) &&
+						(item.status === 'pending' || item.status === 'process')
+					)
+						return item;
+				})
 				.sort(
 					(a, b) =>
 						new Date(a.endDate).getTime() - new Date(b.endDate).getTime()
