@@ -1,18 +1,15 @@
-import { FC, useState } from 'react';
-import Button from '../../../../shared/Button/Button';
-import Heading from '../../../../shared/Heading/Heading';
-import { useTypedSelector } from '../../../../shared/hooks/useTypedSelector';
-import SkeletonLoader from '../../../../shared/SkeletonLoader/SkeletonLoader';
+import Button from '@shared/Button/Button';
+import Heading from '@shared/Heading/Heading';
+import SkeletonLoader from '@shared/SkeletonLoader/SkeletonLoader';
+import { FC } from 'react';
 import UpcomingTask from './UpcomingTask/UpcomingTask';
 import styles from './UpcomingTasks.module.scss';
+import useUpcomingTasks from './useUpcomingTasks';
+
 const UpcomingTasks: FC = () => {
-	const { upcomingTasks, isLoading } = useTypedSelector(({ tasks }) => tasks);
-	const [isShowMore, setIsShowMore] = useState(false);
-	const visibleTasks =
-		upcomingTasks.length > 3 && isShowMore
-			? upcomingTasks
-			: upcomingTasks.slice(0, 3);
-	console.log(isLoading);
+	const { isLoading, setIsShowMore, isShowMore, visibleTasks } =
+		useUpcomingTasks();
+
 	return (
 		<section className={styles.upcomingTasks}>
 			<Heading title='upcoming tasks' className={styles.title} />
